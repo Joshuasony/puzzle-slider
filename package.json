@@ -5,7 +5,9 @@
   "main": "slider.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "babel slider.js > slider.dist.js"
+    "postcss": "postcss --use cssnano --cssnano.autoprefixer.add true -o slider.min.css slider.css",
+    "babel": "babel slider.js > slider.dist.js",
+    "prepublish": "npm run babel; npm run postcss"
   },
   "repository": {
     "type": "git",
