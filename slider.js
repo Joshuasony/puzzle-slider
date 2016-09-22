@@ -48,12 +48,14 @@ const isSolved = board =>
   board.every(row => row.every(tile => tile.isValid))
 
 class Puzzle {
-  constructor(canvas, tileCount, solvedCallback) {
+  constructor(canvas, solvedCallback) {
     this.canvas = canvas
-    this.tileCount = tileCount
     this.solvedCallback = solvedCallback
 
+    this.tileCount = Number(canvas.getAttribute('tiles'))
     this.src = canvas.getAttribute('src')
+    this.width = canvas.getAttribute('width')
+    this.height = canvas.getAttribute('height')
   }
 
   start() {
@@ -75,10 +77,17 @@ class Puzzle {
     updateBoard(this.board)
 
     if (!this.canvas.children.length) {
-      this.canvas.style.setProperty('--tiles', this.board.length)
+      this.canvas.style.setProperty('--tiles', this.tileCount)
 
       if (this.src) {
         this.canvas.style.setProperty('--puzzle-src', `url(${this.src}`)
+      }
+
+      if (this.width) {
+        this.canvas.style.setProperty('--puzzle-width', `${this.width}px`)
+      }
+      if (this.height) {
+        this.canvas.style.setProperty('--puzzle-height', `${this.height}px`)
       }
 
       this.canvas.appendChild(
@@ -207,9 +216,8 @@ function a(len, mapper) {
 
 function main() {
   const [ canvas ] = document.getElementsByTagName('puzzle-board')
-  const tileCount = Number(canvas.getAttribute('tiles'))
 
-  new Puzzle(canvas, tileCount).start()
+  new Puzzle(canvas).start()
 }
 
 main()

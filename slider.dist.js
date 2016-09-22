@@ -74,14 +74,16 @@ var isSolved = function isSolved(board) {
 };
 
 var Puzzle = function () {
-  function Puzzle(canvas, tileCount, solvedCallback) {
+  function Puzzle(canvas, solvedCallback) {
     _classCallCheck(this, Puzzle);
 
     this.canvas = canvas;
-    this.tileCount = tileCount;
     this.solvedCallback = solvedCallback;
 
+    this.tileCount = Number(canvas.getAttribute('tiles'));
     this.src = canvas.getAttribute('src');
+    this.width = canvas.getAttribute('width');
+    this.height = canvas.getAttribute('height');
   }
 
   Puzzle.prototype.start = function start() {
@@ -108,10 +110,17 @@ var Puzzle = function () {
     updateBoard(this.board);
 
     if (!this.canvas.children.length) {
-      this.canvas.style.setProperty('--tiles', this.board.length);
+      this.canvas.style.setProperty('--tiles', this.tileCount);
 
       if (this.src) {
         this.canvas.style.setProperty('--puzzle-src', 'url(' + this.src);
+      }
+
+      if (this.width) {
+        this.canvas.style.setProperty('--puzzle-width', this.width + 'px');
+      }
+      if (this.height) {
+        this.canvas.style.setProperty('--puzzle-height', this.height + 'px');
       }
 
       this.canvas.appendChild(this.board.reduce(function (acc, val) {
@@ -248,9 +257,8 @@ function main() {
 
   var canvas = _document$getElements2[0];
 
-  var tileCount = Number(canvas.getAttribute('tiles'));
 
-  new Puzzle(canvas, tileCount).start();
+  new Puzzle(canvas).start();
 }
 
 main();
