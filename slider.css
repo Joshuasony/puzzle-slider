@@ -64,6 +64,17 @@ slider-tile {
   }
 }
 
+@keyframes flash {
+  50% {
+    filter: brightness(3);
+  }
+  100% {
+    filter: none;
+  }
+}
+
 .empty-tile {
-  animation: fadeout 400ms 600ms forwards;
+  transition: none;
+  animation: flash 300ms 600ms 2,
+             fadeout 400ms 1200ms forwards;
 }
