@@ -1,3 +1,4 @@
+/* global Hammer */
 /* eslint-env browser */
 
 const { abs, floor, random } = Math
@@ -72,6 +73,43 @@ class Puzzle {
         }
       }
     }, false)
+
+    if (typeof Hammer !== 'undefined') {
+      let mc = new Hammer.Manager(this.canvas, {
+        recognizers: [
+          [ Hammer.Swipe, { direction: Hammer.DIRECTION_ALL } ]
+        ]
+      })
+
+      mc.on('swipe', e => {
+        let [ emptyTile ] = document.getElementsByClassName('empty-tile')
+        let toTile = Tile.fromElement(this.board, emptyTile)
+        let { x, y } = toTile
+
+        switch (e.direction) {
+          case Hammer.DIRECTION_LEFT: console.log('swipeleft')
+            x++
+            break
+          case Hammer.DIRECTION_RIGHT: console.log('swiperight')
+            x--
+            break
+          case Hammer.DIRECTION_UP: console.log('swipeup')
+            y++
+            break
+          case Hammer.DIRECTION_DOWN: console.log('swipedown')
+            y--
+            break
+          default: console.log('swipesomewhere')
+            return
+        }
+
+        let fromTile = this.board[y] && this.board[y][x]
+
+        if (fromTile) {
+          this.slideTile(toTile, fromTile)
+        }
+      })
+    }
 
     randomizePuzzle(this)
     updateBoard(this.board)

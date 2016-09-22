@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postcss": "postcss --use cssnano --cssnano.autoprefixer.add true -o slider.min.css slider.css",
-    "babel": "babel slider.js > slider.dist.js",
-    "prepublish": "npm run babel; npm run postcss"
+    "concat": "cat node_modules/hammerjs/hammer.min.js slider.js > slider.hammer.js",
+    "dist": "npm run concat && babel slider.hammer.js > slider.dist.js;rm slider.hammer.js",
+    "prepublish": "npm run dist; npm run postcss"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.14.0",
-    "babel-preset-es2015": "^6.14.0"
+    "babel-preset-es2015": "^6.14.0",
+    "hammerjs": "^2.0.8"
   }
 }

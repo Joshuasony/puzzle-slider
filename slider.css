@@ -6,6 +6,7 @@ puzzle-board, slider-tile {
 puzzle-board {
   display: block;
   position: relative;
+  touch-action: pan-x pan-y;
   --tiles: var(--puzzle-tiles, 3);
   --width: var(--puzzle-width, 300px);
   --height: var(--puzzle-height, 300px);
