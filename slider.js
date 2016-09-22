@@ -77,7 +77,15 @@ class Puzzle {
     if (typeof Hammer !== 'undefined') {
       let mc = new Hammer.Manager(this.canvas, {
         recognizers: [
-          [ Hammer.Swipe, { direction: Hammer.DIRECTION_ALL } ]
+          [
+            Hammer.Swipe, {
+              direction:
+                Hammer.DIRECTION_LEFT  |
+                Hammer.DIRECTION_RIGHT |
+                Hammer.DIRECTION_UP    |
+                Hammer.DIRECTION_DOWN
+            }
+          ]
         ]
       })
 
@@ -87,19 +95,19 @@ class Puzzle {
         let { x, y } = toTile
 
         switch (e.direction) {
-          case Hammer.DIRECTION_LEFT: console.log('swipeleft')
+          case Hammer.DIRECTION_LEFT:
             x++
             break
-          case Hammer.DIRECTION_RIGHT: console.log('swiperight')
+          case Hammer.DIRECTION_RIGHT:
             x--
             break
-          case Hammer.DIRECTION_UP: console.log('swipeup')
+          case Hammer.DIRECTION_UP:
             y++
             break
-          case Hammer.DIRECTION_DOWN: console.log('swipedown')
+          case Hammer.DIRECTION_DOWN:
             y--
             break
-          default: console.log('swipesomewhere')
+          default:
             return
         }
 

@@ -589,7 +589,9 @@ var Puzzle = function () {
 
     if (typeof Hammer !== 'undefined') {
       var mc = new Hammer.Manager(this.canvas, {
-        recognizers: [[Hammer.Swipe, { direction: Hammer.DIRECTION_ALL }]]
+        recognizers: [[Hammer.Swipe, {
+          direction: Hammer.DIRECTION_LEFT | Hammer.DIRECTION_RIGHT | Hammer.DIRECTION_UP | Hammer.DIRECTION_DOWN
+        }]]
       });
 
       mc.on('swipe', function (e) {
@@ -604,23 +606,18 @@ var Puzzle = function () {
 
         switch (e.direction) {
           case Hammer.DIRECTION_LEFT:
-            console.log('swipeleft');
             x++;
             break;
           case Hammer.DIRECTION_RIGHT:
-            console.log('swiperight');
             x--;
             break;
           case Hammer.DIRECTION_UP:
-            console.log('swipeup');
             y++;
             break;
           case Hammer.DIRECTION_DOWN:
-            console.log('swipedown');
             y--;
             break;
           default:
-            console.log('swipesomewhere');
             return;
         }
 
