@@ -190,12 +190,12 @@ function distance(x1, y1, x2, y2) {
   return abs(x1 - x2) + abs(y1 - y2)
 }
 
-function eq(...args) {
-  return args.slice(1).every(val => args[0] === val)
+function eq(val, ...args) {
+  return args.every(v => v === val)
 }
 
 function a(len, mapper) {
-  return new Array(len).fill().map(mapper)
+  return Array.apply(null, Array(len)).map(mapper)
 }
 
 function main() {

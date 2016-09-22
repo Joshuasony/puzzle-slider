@@ -1,0 +1,23 @@
+{
+  "name": "puzzle-slide",
+  "version": "1.0.0",
+  "description": "Sliding the puzzle",
+  "main": "slider.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "babel slider.js > slider.dist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@ssh.gitlab.puzzle.ch:pitc_puzzlegame/puzzle-slider-frontend.git"
+  },
+  "keywords": [
+    "slider"
+  ],
+  "author": "Damian Senn <damian.senn@topaxi.codes>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0"
+  }
+}
