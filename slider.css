@@ -33,7 +33,7 @@ puzzle-board::before {
 }
 
 slider-tile {
-  transition: transform 400ms;
+  transition: transform 300ms;
   position: absolute;
   border: 1px solid black;
   background-color: white;
