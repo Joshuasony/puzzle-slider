@@ -8,6 +8,8 @@ puzzle-board {
   --tiles: var(--puzzle-tiles, 3);
   --width: var(--puzzle-width, 300px);
   --height: var(--puzzle-height, 300px);
+  --tile-width: calc(var(--width) / var(--tiles));
+  --tile-height: calc(var(--height) / var(--tiles));
   width: var(--width);
   height: var(--height);
   background-color: black;
@@ -36,10 +38,7 @@ slider-tile {
   background-color: white;
   box-sizing: border-box;
   background-clip: content-box;
-  --tile-width: calc(var(--width) / var(--tiles));
-  --tile-height: calc(var(--height) / var(--tiles));
-  min-width: var(--tile-width);
-  max-width: var(--tile-width);
+  width: var(--tile-width);
   height: var(--tile-height);
   display: flex;
   align-items: center;
