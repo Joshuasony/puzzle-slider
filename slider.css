@@ -28,7 +28,7 @@ puzzle-board::before {
   bottom: 0;
   background-image: var(--src);
   background-size: var(--width) var(--height);
-  opacity: 0.2;
+  filter: opacity(15%) blur(1px) contrast(0.75) grayscale(1);
 }
 
 slider-tile {
