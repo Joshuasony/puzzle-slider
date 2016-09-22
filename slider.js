@@ -52,6 +52,8 @@ class Puzzle {
     this.canvas = canvas
     this.tileCount = tileCount
     this.solvedCallback = solvedCallback
+
+    this.src = canvas.getAttribute('src')
   }
 
   start() {
@@ -74,6 +76,11 @@ class Puzzle {
 
     if (!this.canvas.children.length) {
       this.canvas.style.setProperty('--tiles', this.board.length)
+
+      if (this.src) {
+        this.canvas.style.setProperty('--puzzle-src', `url(${this.src}`)
+      }
+
       this.canvas.appendChild(
         this.board
           .reduce((acc, val) => acc.concat(val), [])

@@ -80,6 +80,8 @@ var Puzzle = function () {
     this.canvas = canvas;
     this.tileCount = tileCount;
     this.solvedCallback = solvedCallback;
+
+    this.src = canvas.getAttribute('src');
   }
 
   Puzzle.prototype.start = function start() {
@@ -107,6 +109,11 @@ var Puzzle = function () {
 
     if (!this.canvas.children.length) {
       this.canvas.style.setProperty('--tiles', this.board.length);
+
+      if (this.src) {
+        this.canvas.style.setProperty('--puzzle-src', 'url(' + this.src);
+      }
+
       this.canvas.appendChild(this.board.reduce(function (acc, val) {
         return acc.concat(val);
       }, []).reduce(function (tiles, tile) {

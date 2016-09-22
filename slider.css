@@ -11,6 +11,7 @@ puzzle-board {
   --height: var(--puzzle-height, 300px);
   --tile-width: var(--width) / var(--tiles);
   --tile-height: var(--height) / var(--tiles);
+  --src: var(--puzzle-src, url('puzzle.svg'));
   width: var(--width);
   height: var(--height);
   background-color: black;
@@ -25,7 +26,7 @@ puzzle-board::before {
   top: 0;
   right: 0;
   bottom: 0;
-  background-image: url('puzzle.svg');
+  background-image: var(--src);
   background-size: var(--width) var(--height);
   opacity: 0.2;
 }
@@ -42,7 +43,7 @@ slider-tile {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('puzzle.svg');
+  background-image: var(--src);
   background-size: var(--width) var(--height);
   background-position:
     calc(var(--tile-width) * var(--tile-x) * -1)
