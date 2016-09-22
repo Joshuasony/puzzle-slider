@@ -1,0 +1,70 @@
+puzzle-board, slider-tile {
+  display: block;
+}
+
+puzzle-board {
+  display: block;
+  position: relative;
+  --tiles: var(--puzzle-tiles, 3);
+  --width: var(--puzzle-width, 300px);
+  --height: var(--puzzle-height, 300px);
+  width: var(--width);
+  height: var(--height);
+  background-color: black;
+  border: 1px solid black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+puzzle-board::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('puzzle.svg');
+  background-size: var(--width) var(--height);
+  opacity: 0.2;
+}
+
+slider-tile {
+  transition: transform 400ms;
+  position: absolute;
+  border: 1px solid black;
+  background-color: white;
+  box-sizing: border-box;
+  background-clip: content-box;
+  --tile-width: calc(var(--width) / var(--tiles));
+  --tile-height: calc(var(--height) / var(--tiles));
+  min-width: var(--tile-width);
+  max-width: var(--tile-width);
+  height: var(--tile-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('puzzle.svg');
+  background-size: var(--width) var(--height);
+  background-position:
+    calc(var(--tile-width) * var(--tile-x) * -1)
+    calc(var(--tile-height) * var(--tile-y) * -1);
+  transform: translate(
+    calc(var(--tile-width) * var(--tile-pos-x)),
+    calc(var(--tile-height) * var(--tile-pos-y))
+  );
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.empty-tile {
+  animation: fadeout 400ms 600ms forwards;
+}
