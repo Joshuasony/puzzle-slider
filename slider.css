@@ -14,8 +14,6 @@ puzzle-board {
   height: var(--height);
   background-color: black;
   border: 1px solid black;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
 }
 
