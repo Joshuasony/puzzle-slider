@@ -1,5 +1,6 @@
 puzzle-board, slider-tile {
   display: block;
+  -webkit-tap-highlight-color: transparent;
 }
 
 puzzle-board {
