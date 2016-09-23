@@ -75,66 +75,14 @@ class Puzzle {
     }, false)
 
     if (typeof Hammer !== 'undefined') {
-      let mc = new Hammer.Manager(this.canvas, {
-        recognizers: [
-          [
-            Hammer.Swipe, {
-              direction:
-                Hammer.DIRECTION_LEFT  |
-                Hammer.DIRECTION_RIGHT |
-                Hammer.DIRECTION_UP    |
-                Hammer.DIRECTION_DOWN
-            }
-          ]
-        ]
-      })
-
-      mc.on('swipe', e => {
-        let [ emptyTile ] = document.getElementsByClassName('empty-tile')
-        let toTile = Tile.fromElement(this.board, emptyTile)
-        let { x, y } = toTile
-
-        switch (e.direction) {
-          case Hammer.DIRECTION_LEFT:
-            x++
-            break
-          case Hammer.DIRECTION_RIGHT:
-            x--
-            break
-          case Hammer.DIRECTION_UP:
-            y++
-            break
-          case Hammer.DIRECTION_DOWN:
-            y--
-            break
-          default:
-            return
-        }
-
-        let fromTile = this.board[y] && this.board[y][x]
-
-        if (fromTile) {
-          this.slideTile(toTile, fromTile)
-        }
-      })
+      setupSwipes(this)
     }
 
     randomizePuzzle(this)
     updateBoard(this.board)
 
     if (!this.canvas.children.length) {
-      this.canvas.style.setProperty('--tiles', this.tileCount)
-
-      if (this.src) {
-        this.canvas.style.setProperty('--puzzle-src', `url(${this.src}`)
-      }
-
-      if (this.width) {
-        this.canvas.style.setProperty('--puzzle-width', `${this.width}px`)
-      }
-      if (this.height) {
-        this.canvas.style.setProperty('--puzzle-height', `${this.height}px`)
-      }
+      setupProperties(this)
 
       this.canvas.appendChild(
         this.board
@@ -159,6 +107,68 @@ class Puzzle {
       }
     }
   }
+}
+
+function setupProperties(puzzle) {
+  let { canvas: { style } } = puzzle
+
+  style.setProperty('--tiles', puzzle.tileCount)
+
+  if (puzzle.src) {
+    style.setProperty('--puzzle-src', `url(${puzzle.src}`)
+  }
+
+  if (puzzle.width) {
+    style.setProperty('--puzzle-width', `${puzzle.width}px`)
+  }
+  if (puzzle.height) {
+    style.setProperty('--puzzle-height', `${puzzle.height}px`)
+  }
+}
+
+function setupSwipes(puzzle) {
+  let mc = new Hammer.Manager(puzzle.canvas, {
+    recognizers: [
+      [
+        Hammer.Swipe, {
+          direction:
+            Hammer.DIRECTION_LEFT |
+            Hammer.DIRECTION_RIGHT |
+            Hammer.DIRECTION_UP |
+            Hammer.DIRECTION_DOWN
+        }
+      ]
+    ]
+  })
+
+  mc.on('swipe', e => { // eslint-disable-line complexity
+    let [ emptyTile ] = document.getElementsByClassName('empty-tile')
+    let toTile = Tile.fromElement(puzzle.board, emptyTile)
+    let { x, y } = toTile
+
+    switch (e.direction) {
+      case Hammer.DIRECTION_LEFT:
+        x++
+        break
+      case Hammer.DIRECTION_RIGHT:
+        x--
+        break
+      case Hammer.DIRECTION_UP:
+        y++
+        break
+      case Hammer.DIRECTION_DOWN:
+        y--
+        break
+      default:
+        return
+    }
+
+    let fromTile = puzzle.board[y] && puzzle.board[y][x]
+
+    if (fromTile) {
+      puzzle.slideTile(toTile, fromTile)
+    }
+  })
 }
 
 function updateBoard(board) {

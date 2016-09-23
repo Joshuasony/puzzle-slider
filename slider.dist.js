@@ -588,63 +588,14 @@ var Puzzle = function () {
     }, false);
 
     if (typeof Hammer !== 'undefined') {
-      var mc = new Hammer.Manager(this.canvas, {
-        recognizers: [[Hammer.Swipe, {
-          direction: Hammer.DIRECTION_LEFT | Hammer.DIRECTION_RIGHT | Hammer.DIRECTION_UP | Hammer.DIRECTION_DOWN
-        }]]
-      });
-
-      mc.on('swipe', function (e) {
-        var _document$getElements2 = document.getElementsByClassName('empty-tile');
-
-        var emptyTile = _document$getElements2[0];
-
-        var toTile = Tile.fromElement(_this.board, emptyTile);
-        var x = toTile.x;
-        var y = toTile.y;
-
-
-        switch (e.direction) {
-          case Hammer.DIRECTION_LEFT:
-            x++;
-            break;
-          case Hammer.DIRECTION_RIGHT:
-            x--;
-            break;
-          case Hammer.DIRECTION_UP:
-            y++;
-            break;
-          case Hammer.DIRECTION_DOWN:
-            y--;
-            break;
-          default:
-            return;
-        }
-
-        var fromTile = _this.board[y] && _this.board[y][x];
-
-        if (fromTile) {
-          _this.slideTile(toTile, fromTile);
-        }
-      });
+      setupSwipes(this);
     }
 
     randomizePuzzle(this);
     updateBoard(this.board);
 
     if (!this.canvas.children.length) {
-      this.canvas.style.setProperty('--tiles', this.tileCount);
-
-      if (this.src) {
-        this.canvas.style.setProperty('--puzzle-src', "url(" + this.src);
-      }
-
-      if (this.width) {
-        this.canvas.style.setProperty('--puzzle-width', this.width + "px");
-      }
-      if (this.height) {
-        this.canvas.style.setProperty('--puzzle-height', this.height + "px");
-      }
+      setupProperties(this);
 
       this.canvas.appendChild(this.board.reduce(function (acc, val) {
         return acc.concat(val);
@@ -669,6 +620,67 @@ var Puzzle = function () {
 
   return Puzzle;
 }();
+
+function setupProperties(puzzle) {
+  var style = puzzle.canvas.style;
+
+
+  style.setProperty('--tiles', puzzle.tileCount);
+
+  if (puzzle.src) {
+    style.setProperty('--puzzle-src', "url(" + puzzle.src);
+  }
+
+  if (puzzle.width) {
+    style.setProperty('--puzzle-width', puzzle.width + "px");
+  }
+  if (puzzle.height) {
+    style.setProperty('--puzzle-height', puzzle.height + "px");
+  }
+}
+
+function setupSwipes(puzzle) {
+  var mc = new Hammer.Manager(puzzle.canvas, {
+    recognizers: [[Hammer.Swipe, {
+      direction: Hammer.DIRECTION_LEFT | Hammer.DIRECTION_RIGHT | Hammer.DIRECTION_UP | Hammer.DIRECTION_DOWN
+    }]]
+  });
+
+  mc.on('swipe', function (e) {
+    // eslint-disable-line complexity
+    var _document$getElements2 = document.getElementsByClassName('empty-tile');
+
+    var emptyTile = _document$getElements2[0];
+
+    var toTile = Tile.fromElement(puzzle.board, emptyTile);
+    var x = toTile.x;
+    var y = toTile.y;
+
+
+    switch (e.direction) {
+      case Hammer.DIRECTION_LEFT:
+        x++;
+        break;
+      case Hammer.DIRECTION_RIGHT:
+        x--;
+        break;
+      case Hammer.DIRECTION_UP:
+        y++;
+        break;
+      case Hammer.DIRECTION_DOWN:
+        y--;
+        break;
+      default:
+        return;
+    }
+
+    var fromTile = puzzle.board[y] && puzzle.board[y][x];
+
+    if (fromTile) {
+      puzzle.slideTile(toTile, fromTile);
+    }
+  });
+}
 
 function updateBoard(board) {
   board.forEach(function (row, posY) {

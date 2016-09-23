@@ -1,0 +1,12 @@
+{
+  "extends": "./node_modules/eslint-config-topaxi/eslint.json",
+  "rules": {
+    "no-magic-numbers": 0,
+    "no-sequences": 0,
+    "no-bitwise": 0,
+    "no-unexpected-multiline": 0,
+    "prefer-reflect": 0,
+    "prefer-spread": 0,
+    "indent": [ "error", 2, { "SwitchCase": 1 } ]
+  }
+}

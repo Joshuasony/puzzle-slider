@@ -8,7 +8,8 @@
     "postcss": "postcss --use cssnano --cssnano.autoprefixer.add true -o slider.min.css slider.css",
     "concat": "cat node_modules/hammerjs/hammer.min.js slider.js > slider.hammer.js",
     "dist": "npm run concat && babel slider.hammer.js > slider.dist.js;rm slider.hammer.js",
-    "prepublish": "npm run dist; npm run postcss"
+    "lint": "eslint slider.js",
+    "prepublish": "npm run lint && npm run dist; npm run postcss"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
+    "eslint": "^3.5.0",
+    "eslint-config-topaxi": "^1.0.1",
     "hammerjs": "^2.0.8"
   }
 }
