@@ -1,5 +1,6 @@
 /* global Hammer */
 /* eslint-env browser */
+/* eslint-disable no-magic-numbers */
 
 const { abs, floor, random } = Math
 
@@ -48,20 +49,19 @@ const createBoard = count =>
 const isSolved = board =>
   board.every(row => row.every(tile => tile.isValid))
 
-class Puzzle {
-  constructor(canvas, solvedCallback) {
+export default class Puzzle {
+  constructor(canvas) {
     this.canvas = canvas
-    this.solvedCallback = solvedCallback
 
     this.tileCount = Number(canvas.getAttribute('tiles'))
     this.src = canvas.getAttribute('src')
     this.width = canvas.getAttribute('width')
     this.height = canvas.getAttribute('height')
+
+    this.board = createBoard(this.tileCount)
   }
 
   start() {
-    this.board = createBoard(this.tileCount)
-
     this.canvas.addEventListener('click', e => {
       if (Tile.isTile(e.target)) {
         let [ emptyTile ] = document.getElementsByClassName('empty-tile')
@@ -78,11 +78,10 @@ class Puzzle {
       setupSwipes(this)
     }
 
-    randomizePuzzle(this)
     updateBoard(this.board)
 
     if (!this.canvas.children.length) {
-      setupProperties(this)
+      setupStyleProperties(this)
 
       this.canvas.appendChild(
         this.board
@@ -93,6 +92,8 @@ class Puzzle {
           )
       )
     }
+
+    return this
   }
 
   slideTile(toTile, fromTile) {
@@ -107,9 +108,89 @@ class Puzzle {
       }
     }
   }
+
+  randomizeBoard() {
+    const { board } = this
+    const tileCount = board.length
+    const empty = board[tileCount - 1][tileCount - 1]
+
+    randomize()
+
+    if (!isSolvable()) {
+      if (empty.y === 0 && empty.x <= 1) {
+        swapTiles(tileCount - 2, tileCount - 1, tileCount - 1, tileCount - 1)
+      }
+      else {
+        swapTiles(0, 0, 1, 0)
+      }
+
+      if (!isSolvable()) {
+        // This occurred only once to me, retry randomizing
+        this.randomizeBoard()
+      }
+    }
+
+    updateBoard(board)
+
+    function randomize() {
+      let i = tileCount * tileCount - 1
+
+      while (i > 0) {
+        let j = floor(random() * i)
+        let xi = i % tileCount
+        let yi = floor(i / tileCount)
+        let xj = j % tileCount
+        let yj = floor(j / tileCount)
+
+        swapTiles(xi, yi, xj, yj)
+        i--
+      }
+    }
+
+    function swapTiles(x1, y1, x2, y2) {
+      [ board[y2][x2], board[y1][x1] ] = [ board[y1][x1], board[y2][x2] ]
+    }
+
+    function countInversions(i, j) {
+      let inversions = 0
+      let tileNum = j * tileCount + i
+      let lastTile = tileCount * tileCount
+      let tileValue = board[i][j].y * tileCount + board[i][j].x
+
+      for (let q = tileNum + 1; q < lastTile; q++) {
+        let k = q % tileCount
+        let l = floor(q / tileCount)
+        let compValue = board[k][l].y * tileCount + board[k][l].x
+
+        if (tileValue > compValue && tileValue !== lastTile - 1) {
+          inversions++
+        }
+      }
+
+      return inversions
+    }
+
+    function sumInversions() {
+      let inversions = 0
+
+      for (let j = 0; j < tileCount; j++) {
+        for (let i = 0; i < tileCount; i++) {
+          inversions += countInversions(i, j)
+        }
+      }
+
+      return inversions
+    }
+
+    function isSolvable() {
+      return !((tileCount % 2 ?
+          sumInversions() % 2 :
+          sumInversions() + tileCount - (empty.y + 1)) % 2)
+    }
+  }
 }
 
-function setupProperties(puzzle) {
+function setupStyleProperties(puzzle) {
   let { canvas: { style } } = puzzle
 
   style.setProperty('--tiles', puzzle.tileCount)
@@ -180,84 +261,6 @@ function updateBoard(board) {
   })
 }
 
-function randomizePuzzle(puzzle) {
-  const { board } = puzzle
-  const tileCount = board.length
-  const empty = board[tileCount - 1][tileCount - 1]
-
-  randomize()
-
-  if (!isSolvable()) {
-    if (empty.y === 0 && empty.x <= 1) {
-      swapTiles(tileCount - 2, tileCount - 1, tileCount - 1, tileCount - 1)
-    }
-    else {
-      swapTiles(0, 0, 1, 0)
-    }
-
-    if (!isSolvable()) {
-      // This occurred only once to me, retry randomizing
-      randomizePuzzle(puzzle)
-    }
-  }
-
-  function randomize() {
-    let i = tileCount * tileCount - 1
-
-    while (i > 0) {
-      let j = floor(random() * i)
-      let xi = i % tileCount
-      let yi = floor(i / tileCount)
-      let xj = j % tileCount
-      let yj = floor(j / tileCount)
-
-      swapTiles(xi, yi, xj, yj)
-      i--
-    }
-  }
-
-  function swapTiles(x1, y1, x2, y2) {
-    [ board[y2][x2], board[y1][x1] ] = [ board[y1][x1], board[y2][x2] ]
-  }
-
-  function countInversions(i, j) {
-    let inversions = 0
-    let tileNum = j * tileCount + i
-    let lastTile = tileCount * tileCount
-    let tileValue = board[i][j].y * tileCount + board[i][j].x
-
-    for (let q = tileNum + 1; q < lastTile; q++) {
-      let k = q % tileCount
-      let l = floor(q / tileCount)
-      let compValue = board[k][l].y * tileCount + board[k][l].x
-
-      if (tileValue > compValue && tileValue !== lastTile - 1) {
-        inversions++
-      }
-    }
-
-    return inversions
-  }
-
-  function sumInversions() {
-    let inversions = 0
-
-    for (let j = 0; j < tileCount; j++) {
-      for (let i = 0; i < tileCount; i++) {
-        inversions += countInversions(i, j)
-      }
-    }
-
-    return inversions
-  }
-
-  function isSolvable() {
-    return !((tileCount % 2 ?
-        sumInversions() % 2 :
-        sumInversions() + tileCount - (empty.y + 1)) % 2)
-  }
-}
-
 function distance(x1, y1, x2, y2) {
   return abs(x1 - x2) + abs(y1 - y2)
 }
@@ -269,11 +272,3 @@ function eq(val, ...args) {
 function a(len, mapper) {
   return Array.apply(null, Array(len)).map(mapper)
 }
-
-function main() {
-  const [ canvas ] = document.getElementsByTagName('puzzle-board')
-
-  new Puzzle(canvas).start()
-}
-
-main()

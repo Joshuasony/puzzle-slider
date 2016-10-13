@@ -12,7 +12,7 @@ puzzle-board {
   --height: var(--puzzle-height, 300px);
   --tile-width: var(--width) / var(--tiles);
   --tile-height: var(--height) / var(--tiles);
-  --src: var(--puzzle-src, url('puzzle.svg'));
+  --src: var(--puzzle-src, url('https://topaxi.ch/puzzle-slide/puzzle.svg'));
   width: var(--width);
   height: var(--height);
   background-color: black;
@@ -29,7 +29,7 @@ puzzle-board::before {
   bottom: 0;
   background-image: var(--src);
   background-size: var(--width) var(--height);
-  filter: opacity(15%) blur(1px) contrast(0.75) grayscale(1);
+  filter: opacity(30%) blur(1px) contrast(0.75) grayscale(1);
 }
 
 slider-tile {
@@ -59,7 +59,6 @@ slider-tile {
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
   }

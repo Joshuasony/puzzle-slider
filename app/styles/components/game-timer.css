@@ -1,0 +1,12 @@
+game-timer {
+  display: block;
+  contain: content;
+  user-select: none;
+  font-size: 2rem;
+}
+
+game-timer .liquid-container {
+  contain: content;
+  display: inline-block;
+  vertical-align: top;
+}

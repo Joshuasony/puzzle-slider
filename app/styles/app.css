@@ -1,0 +1,8 @@
+@import 'reset.css';
+@import 'game/slider.css';
+@import 'components/game-timer.css';
+@import 'pages/intro.css';
+
+.application-outlet {
+  min-height: 100vh;
+}
