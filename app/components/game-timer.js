@@ -17,6 +17,7 @@ export default Ember.Component.extend({
   seconds: 0,
   milliseconds: 0,
   isUpdating: false,
+  isRunning: false,
   startTime: null,
   lastFrame: null,
 
@@ -30,12 +31,17 @@ export default Ember.Component.extend({
   },
 
   start() {
+    this.isRunning = true
     this.startTime = performance.now()
     this.lastFrame = this.startTime
     this.run(this.startTime)
   },
 
   run(now) {
+    if (!this.isRunning) {
+      return
+    }
+
     requestAnimationFrame(t => this.run(t))
 
     let delta = now - this.lastFrame
@@ -55,5 +61,9 @@ export default Ember.Component.extend({
     this.set('minutes', padStart(minutes, 2))
     this.set('seconds', padStart(seconds, 2))
     this.set('milliseconds', padEnd(milliseconds, 3))
+  },
+
+  willDestroyElement() {
+    this.isRunning = false
   }
 })
