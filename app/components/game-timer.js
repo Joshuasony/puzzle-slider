@@ -27,7 +27,7 @@ export default Ember.Component.extend({
 
   init(...args) {
     this._super(...args)
-    this.update(0)
+    this.reset()
   },
 
   start() {
@@ -35,6 +35,15 @@ export default Ember.Component.extend({
     this.startTime = performance.now()
     this.lastFrame = this.startTime
     this.run(this.startTime)
+  },
+
+  stop() {
+    this.isRunning = false
+  },
+
+  reset() {
+    this.stop()
+    this.update(0)
   },
 
   run(now) {
@@ -64,6 +73,6 @@ export default Ember.Component.extend({
   },
 
   willDestroyElement() {
-    this.isRunning = false
+    this.stop()
   }
 })

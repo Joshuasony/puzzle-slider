@@ -34,5 +34,17 @@ export default Ember.Component.extend({
 
   didRender() {
     this.setupPuzzle()
+  },
+
+  willDestroyElement() {
+    this.puzzle.destroy()
+  },
+
+  actions: {
+    restart() {
+      this.timer.reset()
+      this.puzzle.destroy()
+      this.setupPuzzle()
+    }
   }
 })

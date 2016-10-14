@@ -57,22 +57,18 @@ export default class Puzzle {
     this.src = canvas.getAttribute('src')
     this.width = canvas.getAttribute('width')
     this.height = canvas.getAttribute('height')
+    this.clickHandler = this.clickHandler.bind(this)
 
     this.board = createBoard(this.tileCount)
   }
 
-  start() {
-    this.canvas.addEventListener('click', e => {
-      if (Tile.isTile(e.target)) {
-        let [ emptyTile ] = document.getElementsByClassName('empty-tile')
-        let toTile = Tile.fromElement(this.board, emptyTile)
-        let fromTile = Tile.fromElement(this.board, e.target)
+  destroy() {
+    this.canvas.innerHTML = ''
+    this.canvas.removeEventListener('click', this.clickHandler, false)
+  }
 
-        if (distance(fromTile.x, fromTile.y, toTile.x, toTile.y) === 1) {
-          this.slideTile(toTile, fromTile)
-        }
-      }
-    }, false)
+  start() {
+    this.canvas.addEventListener('click', this.clickHandler, false)
 
     if (typeof Hammer !== 'undefined') {
       setupSwipes(this)
@@ -94,6 +90,18 @@ export default class Puzzle {
     }
 
     return this
+  }
+
+  clickHandler(e) {
+    if (Tile.isTile(e.target)) {
+      let [ emptyTile ] = this.canvas.getElementsByClassName('empty-tile')
+      let toTile = Tile.fromElement(this.board, emptyTile)
+      let fromTile = Tile.fromElement(this.board, e.target)
+
+      if (distance(fromTile.x, fromTile.y, toTile.x, toTile.y) === 1) {
+        this.slideTile(toTile, fromTile)
+      }
+    }
   }
 
   slideTile(toTile, fromTile) {
@@ -223,7 +231,7 @@ function setupSwipes(puzzle) {
   })
 
   mc.on('swipe', e => { // eslint-disable-line complexity
-    let [ emptyTile ] = document.getElementsByClassName('empty-tile')
+    let [ emptyTile ] = this.canvas.getElementsByClassName('empty-tile')
     let toTile = Tile.fromElement(puzzle.board, emptyTile)
     let { x, y } = toTile
 
