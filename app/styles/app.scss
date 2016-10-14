@@ -1,0 +1,8 @@
+@import 'reset';
+@import 'game/slider';
+@import 'components/game-timer';
+@import 'pages/intro';
+
+.application-outlet {
+  min-height: 100%;
+}
