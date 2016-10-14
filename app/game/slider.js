@@ -1,6 +1,6 @@
 /* global Hammer */
 /* eslint-env browser */
-/* eslint-disable no-magic-numbers */
+/* eslint-disable no-magic-numbers, no-unexpected-multiline */
 
 const { abs, floor, random } = Math
 
@@ -270,5 +270,5 @@ function eq(val, ...args) {
 }
 
 function a(len, mapper) {
-  return Array.apply(null, Array(len)).map(mapper)
+  return Array(...Array(len)).map(mapper)
 }

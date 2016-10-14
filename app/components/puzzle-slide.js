@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import Ember from 'ember'
 import Puzzle from '../game/slider'
 
@@ -21,7 +22,9 @@ export default Ember.Component.extend({
       if (--ready) {
         setTimeout(() => {
           this.puzzle.randomizeBoard()
-          this.timer = this.childViews.find(v => v.element.tagName === 'GAME-TIMER')
+          this.timer = this.childViews.find(v =>
+            v.element.tagName === 'GAME-TIMER'
+          )
           this.timer.start()
           this.set('startTime', this.timer.startTime)
         }, 500)
