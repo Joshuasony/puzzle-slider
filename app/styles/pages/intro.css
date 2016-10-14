@@ -1,9 +1,5 @@
 .page-intro .slick-slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  flex: 1;
   margin-bottom: 0;
   padding-bottom: 10vh;
 }

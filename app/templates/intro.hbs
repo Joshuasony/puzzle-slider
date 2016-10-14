@@ -8,6 +8,10 @@
   <div class="box">
     Intro 3
 
-    {{#link-to 'play'}}START{{/link-to}}
+    <div class="layout-row layout-align-center-center">
+      {{#paper-button primary=true raised=true onClick=(transition-to 'play')}}
+        Start!
+      {{/paper-button}}
+    </div>
   </div>
 {{/slick-slider}}

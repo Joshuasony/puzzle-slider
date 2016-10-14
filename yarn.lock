@@ -85,17 +85,21 @@ amdefine@>=0.0.4:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
+"angular-material-source@github:angular/material#v1.0.6":
+  version "1.0.6"
+  resolved "https://codeload.github.com/angular/material/tar.gz/8b886cbed0254eaefa2f85077ebf4169cb09a762"
+
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
 
+ansi-regex@*, ansi-regex@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.0.0.tgz#c5061b6e0ef8a81775e50f5d66151bf6bf371107"
+
 ansi-regex@^0.2.0, ansi-regex@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-0.2.1.tgz#0d8e946967a3d8143f93e24e298525fc1b2235f9"
-
-ansi-regex@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.0.0.tgz#c5061b6e0ef8a81775e50f5d66151bf6bf371107"
 
 ansi-styles@^1.1.0:
   version "1.1.0"
@@ -295,7 +299,16 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-autoprefixer:
+autoprefixer-core@^5.0.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/autoprefixer-core/-/autoprefixer-core-5.2.1.tgz#e640c414ae419aae21c1ad43c8ea0f3db82a566d"
+  dependencies:
+    browserslist "~0.4.0"
+    caniuse-db "^1.0.30000214"
+    num2fraction "^1.1.0"
+    postcss "~4.1.12"
+
+autoprefixer@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.5.1.tgz#ae759a5221e709f3da17c2d656230e67c43cbb75"
   dependencies:
@@ -636,6 +649,15 @@ broccoli-asset-rewrite@^1.0.13:
   resolved "https://registry.yarnpkg.com/broccoli-asset-rewrite/-/broccoli-asset-rewrite-1.1.0.tgz#77a5da56157aa318c59113245e8bafb4617f8830"
   dependencies:
     broccoli-filter "^1.2.3"
+
+broccoli-autoprefixer@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/broccoli-autoprefixer/-/broccoli-autoprefixer-3.0.0.tgz#b7c9edb7166382ab2c626261ff56566cda0d1a71"
+  dependencies:
+    autoprefixer-core "^5.0.0"
+    broccoli-filter "^0.1.6"
+    object-assign "^2.0.0"
+    postcss "^4.1.11"
 
 broccoli-babel-transpiler@^5.4.5, broccoli-babel-transpiler@^5.5.0, broccoli-babel-transpiler@^5.6.0:
   version "5.6.1"
@@ -1055,6 +1077,12 @@ browserify@10.1.3:
     vm-browserify "~0.0.1"
     xtend "^4.0.0"
 
+browserslist@~0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-0.4.0.tgz#3bd4ab9199dc1b9150d4d6dba4d9d3aabbc86dd4"
+  dependencies:
+    caniuse-db "^1.0.30000153"
+
 browserslist@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-1.4.0.tgz#9cfdcf5384d9158f5b70da2aa00b30e8ff019049"
@@ -1142,7 +1170,7 @@ can-symlink@^1.0.0:
   dependencies:
     tmp "0.0.28"
 
-caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000554:
+caniuse-db@^1.0.30000153, caniuse-db@^1.0.30000214, caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000554:
   version "1.0.30000557"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000557.tgz#4a36c82f81b06fdd78461bfb1d3dc35afaa6deae"
 
@@ -1919,8 +1947,8 @@ diffie-hellman@^5.0.0:
     randombytes "^2.0.0"
 
 doctrine@^1.2.2:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.4.0.tgz#e2db32defa752407b935b381e89f3740e469e599"
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
   dependencies:
     esutils "^2.0.2"
     isarray "^1.0.0"
@@ -2413,6 +2441,12 @@ ember-cordova@0.3.5:
     svg2png "^3.0.0"
     xml2js "^0.4.17"
 
+ember-css-transitions@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/ember-css-transitions/-/ember-css-transitions-0.1.5.tgz#0c57917b89e7c39d37f4435b8fb18fca0acccf73"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+
 ember-data@^2.8.0:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-2.8.1.tgz#ec09afaeab76df351dc561ce2ee1eb92f5bca8ff"
@@ -2482,11 +2516,30 @@ ember-pad@1.2.1:
   dependencies:
     ember-cli-babel "^5.1.5"
 
+ember-paper@1.0.0-alpha.5:
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/ember-paper/-/ember-paper-1.0.0-alpha.5.tgz#fc9fd3796dd9c6b2f1bb8bb87094702ef3ec07f7"
+  dependencies:
+    angular-material-source angular/material#v1.0.6
+    broccoli-autoprefixer "^3.0.0"
+    broccoli-filter "^1.2.3"
+    broccoli-funnel "^1.0.1"
+    broccoli-merge-trees "^1.1.0"
+    ember-cli-babel "^5.1.6"
+    ember-css-transitions "0.1.5"
+    ember-wormhole "0.4.1"
+
 ember-qunit@^0.4.18:
   version "0.4.22"
   resolved "https://registry.yarnpkg.com/ember-qunit/-/ember-qunit-0.4.22.tgz#bc389798e1a4a933f542863025e2fb91d856da49"
   dependencies:
     ember-test-helpers "^0.5.32"
+
+ember-reactive-helpers@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/ember-reactive-helpers/-/ember-reactive-helpers-0.4.0.tgz#bd6b48f556414e313c16ad26e99d5eaeefd15959"
+  dependencies:
+    ember-cli-babel "^5.1.6"
 
 ember-resolver@^2.0.3:
   version "2.1.0"
@@ -2549,6 +2602,13 @@ ember-try@^0.2.2:
     rsvp "^3.0.17"
     semver "^5.1.0"
     sync-exec "^0.6.2"
+
+ember-wormhole@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.4.1.tgz#55fafaad20a650d21f6583a0e59c060a65338111"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+    ember-cli-htmlbars "^1.0.3"
 
 encodeurl@~1.0.1:
   version "1.0.1"
@@ -2638,6 +2698,10 @@ es6-map@^0.1.3:
     es6-symbol "~3.1.0"
     event-emitter "~0.3.4"
 
+es6-promise@~2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-2.3.0.tgz#96edb9f2fdb01995822b263dd8aadab6748181bc"
+
 es6-promise@~4.0.3:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
@@ -2685,7 +2749,7 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-topaxi:
+eslint-config-topaxi@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/eslint-config-topaxi/-/eslint-config-topaxi-1.0.1.tgz#586e4d8df9e06e7233249467d279385fc013e333"
 
@@ -3548,7 +3612,7 @@ ignore@^3.1.5:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.2.0.tgz#8d88f03c3002a0ac52114db25d2c673b0bf1e435"
 
-imurmurhash@^0.1.4:
+imurmurhash@*, imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
 
@@ -3837,7 +3901,7 @@ jodid25519@^1.0.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
 
-js-base64@^2.1.9:
+js-base64@^2.1.9, js-base64@~2.1.8:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
 
@@ -4975,7 +5039,7 @@ npmlog@~2.0.3, npmlog@~2.0.4, "npmlog@0 || 1 || 2", "npmlog@0.1 || 1 || 2":
     are-we-there-yet "~1.1.2"
     gauge "~1.2.5"
 
-num2fraction@^1.2.2:
+num2fraction@^1.1.0, num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
 
@@ -5275,6 +5339,14 @@ portfinder@^1.0.3, portfinder@^1.0.4, portfinder@^1.0.5:
 postcss-value-parser@^3.2.3:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
+
+postcss@^4.1.11, postcss@~4.1.12:
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-4.1.16.tgz#4c449b4c8af9df3caf6d37f8e1e575d0361758dc"
+  dependencies:
+    es6-promise "~2.3.0"
+    js-base64 "~2.1.8"
+    source-map "~0.4.2"
 
 postcss@^5.2.4:
   version "5.2.4"

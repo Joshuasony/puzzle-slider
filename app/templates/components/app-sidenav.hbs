@@ -1,0 +1,23 @@
+{{#paper-sidenav-container class="sidenav-container"}}
+  {{#paper-sidenav
+    class="md-whiteframe-z2"
+    name="default"
+    open=open
+    onToggle=(action (mut open))
+  }}
+    {{#paper-toolbar as |toolbar|}}
+      {{#paper-toolbar-tools}}PuzzleSlide{{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content padding=true}}
+      {{#paper-list}}
+        {{#paper-item onClick=(transition-to 'intro')}}
+          Tutorial
+        {{/paper-item}}
+      {{/paper-list}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  {{#paper-card-content class="flex layout-column"}}
+    {{~yield~}}
+  {{/paper-card-content}}
+{{/paper-sidenav-container}}

@@ -3,6 +3,7 @@ import Puzzle from '../game/slider'
 
 export default Ember.Component.extend({
   tagName: 'puzzle-slide',
+  classNames: [ 'layout-column', 'layout-align-start-center' ],
   attributeBindings: [ 'tiles' ],
   tiles: 4,
   startTime: null,

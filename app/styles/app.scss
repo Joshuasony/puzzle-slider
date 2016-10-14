@@ -1,8 +1,15 @@
+@import 'custom-paper';
 @import 'reset';
 @import 'game/slider';
 @import 'components/game-timer';
 @import 'pages/intro';
 
-.application-outlet {
-  min-height: 100%;
+.application-outlet > .liquid-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-container {
+  min-height: 100vh;
 }
