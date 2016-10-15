@@ -13,8 +13,8 @@ export default Component.extend({
 
   fps: 18,
 
-  minutes: '00',
-  seconds: '00',
+  minutes: 0,
+  seconds: 0,
   _minutes: '00',
   _seconds: '00',
   isUpdating: false,
@@ -56,21 +56,21 @@ export default Component.extend({
   },
 
   update(diff) {
-    let milliseconds = padEnd(~~(diff) % 1000, 3)
-    let seconds = padStart(~~(diff / 1000) % 60, 2)
-    let minutes = padStart(~~(diff / (1000 * 60)) % 60, 2)
+    let milliseconds = ~~(diff) % 1000
+    let seconds = ~~(diff / 1000) % 60
+    let minutes = ~~(diff / (1000 * 60)) % 60
 
     if (minutes !== this.minutes) {
       this.minutes = minutes
-      this.set('_minutes', minutes)
+      this.set('_minutes', padStart(minutes, 2))
     }
 
     if (seconds !== this.seconds) {
       this.seconds = seconds
-      this.set('_seconds', seconds)
+      this.set('_seconds', padStart(seconds, 2))
     }
 
-    this.msEl.textContent = milliseconds
+    this.msEl.textContent = padEnd(milliseconds, 3)
   },
 
   willDestroyElement() {
