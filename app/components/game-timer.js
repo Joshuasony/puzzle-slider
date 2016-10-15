@@ -6,23 +6,22 @@ import {
   padEnd
 } from 'ember-pad/utils/pad'
 
-export default Ember.Component.extend({
+const { Component } = Ember
+
+export default Component.extend({
   tagName: 'game-timer',
 
-  fps: 24,
+  fps: 18,
 
-  minutes: 0,
-  seconds: 0,
-  milliseconds: 0,
+  minutes: '00',
+  seconds: '00',
+  _minutes: '00',
+  _seconds: '00',
   isUpdating: false,
   isRunning: false,
   startTime: null,
   lastFrame: null,
-
-  init(...args) {
-    this._super(...args)
-    this.reset()
-  },
+  msEl: null,
 
   start() {
     this.isRunning = true
@@ -57,16 +56,28 @@ export default Ember.Component.extend({
   },
 
   update(diff) {
-    let milliseconds = ~~(diff) % 1000
-    let seconds = ~~(diff / 1000) % 60
-    let minutes = ~~(diff / (1000 * 60)) % 60
+    let milliseconds = padEnd(~~(diff) % 1000, 3)
+    let seconds = padStart(~~(diff / 1000) % 60, 2)
+    let minutes = padStart(~~(diff / (1000 * 60)) % 60, 2)
 
-    this.set('minutes', padStart(minutes, 2))
-    this.set('seconds', padStart(seconds, 2))
-    this.set('milliseconds', padEnd(milliseconds, 3))
+    if (minutes !== this.minutes) {
+      this.minutes = minutes
+      this.set('_minutes', minutes)
+    }
+
+    if (seconds !== this.seconds) {
+      this.seconds = seconds
+      this.set('_seconds', seconds)
+    }
+
+    this.msEl.textContent = milliseconds
   },
 
   willDestroyElement() {
     this.stop()
+  },
+
+  didInsertElement() {
+    this.msEl = this.element.getElementsByClassName('ms')[0]
   }
 })

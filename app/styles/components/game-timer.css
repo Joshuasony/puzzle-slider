@@ -1,12 +1,22 @@
 game-timer {
-  display: block;
+  display: flex;
   contain: content;
   user-select: none;
   font-size: 2rem;
 }
 
-game-timer .liquid-container {
-  contain: content;
+game-timer > .liquid-container {
   display: inline-block;
   vertical-align: top;
+}
+
+game-timer > .liquid-container,
+game-timer > .liquid-container > .liquid-child {
+  contain: content;
+  will-change: transform;
+}
+
+game-timer > .ms {
+  will-change: contents;
+  contain: content;
 }

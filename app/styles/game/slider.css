@@ -4,6 +4,7 @@ puzzle-board, slider-tile {
 }
 
 puzzle-board {
+  contain: strict;
   display: block;
   position: relative;
   touch-action: pan-x pan-y;
@@ -33,6 +34,7 @@ puzzle-board::before {
 }
 
 slider-tile {
+  contain: strict;
   transition: transform 300ms;
   position: absolute;
   border: 1px solid black;
@@ -49,10 +51,15 @@ slider-tile {
   background-position:
     calc(var(--tile-width) * var(--tile-x) * -1)
     calc(var(--tile-height) * var(--tile-y) * -1);
-  transform: translate(
+  transform: translate3d(
     calc(var(--tile-width) * var(--tile-pos-x)),
-    calc(var(--tile-height) * var(--tile-pos-y))
+    calc(var(--tile-height) * var(--tile-pos-y)),
+    0
   );
+}
+
+slider-tile:hover {
+  will-change: transform;
 }
 
 @keyframes fadeout {
