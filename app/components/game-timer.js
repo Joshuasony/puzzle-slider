@@ -6,8 +6,6 @@ import {
   padEnd
 } from 'ember-pad/utils/pad'
 
-const { floor } = Math
-
 export default Ember.Component.extend({
   tagName: 'game-timer',
 
@@ -20,10 +18,6 @@ export default Ember.Component.extend({
   isRunning: false,
   startTime: null,
   lastFrame: null,
-
-  interval: Ember.computed('fps', function() {
-    return 1000 / this.get('fps')
-  }),
 
   init(...args) {
     this._super(...args)
@@ -54,7 +48,7 @@ export default Ember.Component.extend({
     requestAnimationFrame(t => this.run(t))
 
     let delta = now - this.lastFrame
-    let interval = this.get('interval')
+    let interval = 1000 / this.fps
 
     if (delta > interval) {
       this.lastFrame = now - (delta % interval)
@@ -63,9 +57,9 @@ export default Ember.Component.extend({
   },
 
   update(diff) {
-    let milliseconds = floor(diff) % 1000
-    let seconds = floor(diff / 1000) % 60
-    let minutes = floor(diff / (1000 * 60)) % 60
+    let milliseconds = ~~(diff) % 1000
+    let seconds = ~~(diff / 1000) % 60
+    let minutes = ~~(diff / (1000 * 60)) % 60
 
     this.set('minutes', padStart(minutes, 2))
     this.set('seconds', padStart(seconds, 2))
