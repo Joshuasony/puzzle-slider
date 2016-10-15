@@ -43,7 +43,7 @@
     "ember-gestures": "0.4.2",
     "ember-getowner-polyfill": "1.0.1",
     "ember-load-initializers": "^0.5.1",
-    "ember-pad": "1.2.1",
+    "ember-pad": "1.2.2",
     "ember-paper": "1.0.0-alpha.5",
     "ember-reactive-helpers": "^0.4.0",
     "ember-resolver": "^2.0.3",
