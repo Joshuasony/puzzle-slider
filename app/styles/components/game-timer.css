@@ -5,18 +5,22 @@ game-timer {
   font-size: 2rem;
 }
 
+game-timer > .liquid-container,
+game-timer > .liquid-container > .liquid-child {
+  contain: content;
+}
+
 game-timer > .liquid-container {
   display: inline-block;
   vertical-align: top;
 }
 
-game-timer > .liquid-container,
 game-timer > .liquid-container > .liquid-child {
-  contain: content;
   will-change: transform;
 }
 
 game-timer > .ms {
   will-change: contents;
-  contain: content;
+  contain: strict;
+  width: 3ch;
 }
