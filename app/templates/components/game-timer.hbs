@@ -1,1 +1,5 @@
-{{liquid-bind _minutes use='toUp'}}:{{liquid-bind _seconds use='toUp'}}.<span class="ms">000</span>
+{{#if animate}}
+  {{liquid-bind _minutes use='toUp'}}:{{liquid-bind _seconds use='toUp'}}.<span class="ms">000</span>
+{{else}}
+  {{_minutes}}:{{_seconds}}.<span class="ms">000</span>
+{{/if}}

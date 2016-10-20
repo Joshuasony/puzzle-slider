@@ -8,10 +8,14 @@ import {
 
 const { Component } = Ember
 
+const isAndroid = /Android/.test(navigator.userAgent)
+const isAndroid4 = /Android 4\./.test(navigator.userAgent)
+const isFirefox = /Firefox/.test(navigator.userAgent)
+
 export default Component.extend({
   tagName: 'game-timer',
 
-  fps: 18,
+  fps: isAndroid || isFirefox ? 18 : 24,
 
   minutes: 0,
   seconds: 0,
@@ -22,6 +26,8 @@ export default Component.extend({
   startTime: null,
   lastFrame: null,
   msEl: null,
+
+  animate: !isAndroid4,
 
   start() {
     this.isRunning = true
