@@ -88,7 +88,7 @@ export default class Puzzle {
       setupSwipes(this)
     }
 
-    updateBoard(this.board)
+    this.updateBoard()
 
     if (!this.canvas.children.length) {
       setupStyleProperties(this)
@@ -123,7 +123,7 @@ export default class Puzzle {
       this.board[toTile.y][toTile.x] = fromTile
       this.board[fromTile.y][fromTile.x] = toTile
 
-      updateBoard(this.board)
+      this.updateBoard()
 
       if (isSolved(this.board)) {
         this.solvedCallback.call(null)
@@ -131,16 +131,29 @@ export default class Puzzle {
     }
   }
 
+  updateBoard(board) {
+    if (board) {
+      this.board = board
+    }
+
+    this.board.forEach((row, posY) => {
+      row.forEach((tile, posX) => {
+        if (tile.x !== posX) tile.x = posX
+        if (tile.y !== posY) tile.y = posY
+      })
+    })
+  }
+
   randomizeBoard() {
     const { board } = this
-    const tileCount = board.length
-    const empty = board[tileCount - 1][tileCount - 1]
+    const count = board.length
+    const empty = board[count - 1][count - 1]
 
     randomize()
 
     if (!isSolvable()) {
       if (empty.y === 0 && empty.x <= 1) {
-        swapTiles(tileCount - 2, tileCount - 1, tileCount - 1, tileCount - 1)
+        swapTiles(count - 2, count - 1, count - 1, count - 1)
       }
       else {
         swapTiles(0, 0, 1, 0)
@@ -152,17 +165,17 @@ export default class Puzzle {
       }
     }
 
-    updateBoard(board)
+    this.updateBoard()
 
     function randomize() {
-      let i = tileCount * tileCount - 1
+      let i = count * count - 1
 
       while (i > 0) {
         let j = floor(random() * i)
-        let xi = i % tileCount
-        let yi = floor(i / tileCount)
-        let xj = j % tileCount
-        let yj = floor(j / tileCount)
+        let xi = i % count
+        let yi = floor(i / count)
+        let xj = j % count
+        let yj = floor(j / count)
 
         swapTiles(xi, yi, xj, yj)
         i--
@@ -175,14 +188,14 @@ export default class Puzzle {
 
     function countInversions(i, j) {
       let inversions = 0
-      let tileNum = j * tileCount + i
-      let lastTile = tileCount * tileCount
-      let tileValue = board[i][j].y * tileCount + board[i][j].x
+      let tileNum = j * count + i
+      let lastTile = count * count
+      let tileValue = board[i][j].y * count + board[i][j].x
 
       for (let q = tileNum + 1; q < lastTile; q++) {
-        let k = q % tileCount
-        let l = floor(q / tileCount)
-        let compValue = board[k][l].y * tileCount + board[k][l].x
+        let k = q % count
+        let l = floor(q / count)
+        let compValue = board[k][l].y * count + board[k][l].x
 
         if (tileValue > compValue && tileValue !== lastTile - 1) {
           inversions++
@@ -195,8 +208,8 @@ export default class Puzzle {
     function sumInversions() {
       let inversions = 0
 
-      for (let j = 0; j < tileCount; j++) {
-        for (let i = 0; i < tileCount; i++) {
+      for (let j = 0; j < count; j++) {
+        for (let i = 0; i < count; i++) {
           inversions += countInversions(i, j)
         }
       }
@@ -205,9 +218,9 @@ export default class Puzzle {
     }
 
     function isSolvable() {
-      return !((tileCount % 2 ?
+      return !((count % 2 ?
           sumInversions() % 2 :
-          sumInversions() + tileCount - (empty.y + 1)) % 2)
+          sumInversions() + count - (empty.y + 1)) % 2)
     }
   }
 }
@@ -274,15 +287,6 @@ function setupSwipes(puzzle) {
   })
 }
 
-function updateBoard(board) {
-  board.forEach((row, posY) => {
-    row.forEach((tile, posX) => {
-      if (tile.x !== posX) tile.x = posX
-      if (tile.y !== posY) tile.y = posY
-    })
-  })
-}
-
 function distance(x1, y1, x2, y2) {
   return abs(x1 - x2) + abs(y1 - y2)
 }
@@ -292,5 +296,5 @@ function eq(val, ...args) {
 }
 
 function a(len, mapper) {
-  return Array(len).fill(undefined).map(mapper)
+  return Array(len).fill().map(mapper)
 }

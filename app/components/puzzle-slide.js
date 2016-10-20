@@ -24,12 +24,14 @@ export default Ember.Component.extend({
       return
     }
 
-    this.initialTileState.forEach((row, y) => {
+    let board = Array(this.tiles).fill().map(() => Array(this.tiles))
+
+    this.initialTileState.forEach((row, y) =>
       row.forEach(([ tileY, tileX ], x) => {
-        this.puzzle.board[y][x].x = tileX
-        this.puzzle.board[y][x].y = tileY
+        board[y][x] = this.puzzle.board[tileY][tileX]
       })
-    })
+    )
+    this.puzzle.updateBoard(board)
   },
 
   setupPuzzle() {
