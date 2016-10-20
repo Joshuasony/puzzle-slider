@@ -40,7 +40,6 @@ slider-tile {
   border: 1px solid black;
   background-color: white;
   box-sizing: border-box;
-  background-clip: content-box;
   width: calc(var(--tile-width));
   height: calc(var(--tile-height));
   display: flex;
