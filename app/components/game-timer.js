@@ -24,6 +24,7 @@ export default Component.extend({
   isUpdating: false,
   isRunning: false,
   startTime: null,
+  endTime: null,
   lastFrame: null,
   msEl: null,
 
@@ -38,10 +39,12 @@ export default Component.extend({
 
   stop() {
     this.isRunning = false
+    this.endTime = performance.now()
   },
 
   reset() {
-    this.stop()
+    this.isRunning = false
+    this.endTime = null
     this.update(0)
   },
 
