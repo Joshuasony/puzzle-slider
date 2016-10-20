@@ -2,7 +2,9 @@
 import Ember from 'ember'
 import Puzzle from '../game/slider'
 
-export default Ember.Component.extend({
+const { Component, run } = Ember
+
+export default Component.extend({
   tagName: 'puzzle-slide',
   classNames: [ 'layout-column', 'layout-align-start-center' ],
   attributeBindings: [ 'tiles' ],
@@ -45,14 +47,11 @@ export default Ember.Component.extend({
       if (--ready) {
         emptyTile.removeEventListener('animationend', start)
 
-        setTimeout(() => {
+        setTimeout(run.bind(() => {
           this.setInitialTileState()
-          this.timer = this.childViews.find(v =>
-            v.element.tagName === 'GAME-TIMER'
-          )
           this.timer.start()
           this.set('startTime', this.timer.startTime)
-        }, 500)
+        }), 500)
       }
     }
 
@@ -60,6 +59,9 @@ export default Ember.Component.extend({
   },
 
   didRender() {
+    this.timer = this.childViews.find(v =>
+      v.element.tagName === 'GAME-TIMER'
+    )
     this.setupPuzzle()
   },
 
@@ -75,7 +77,7 @@ export default Ember.Component.extend({
     },
     solved() {
       this.timer.stop()
-      this.sendAction('onsolved')
+      this.sendAction('onsolved', this.timer.endTime)
     }
   }
 })
