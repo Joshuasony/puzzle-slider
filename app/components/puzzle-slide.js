@@ -36,14 +36,15 @@ export default Ember.Component.extend({
 
   setupPuzzle() {
     this.puzzle = new Puzzle(this.element.querySelector('puzzle-board'))
-    this.puzzle.solvedCallback = () => this.sendAction('onsolved')
+    this.puzzle.solvedCallback = () => this.send('solved')
     this.puzzle.start()
 
     let [ emptyTile ] = this.element.getElementsByClassName('empty-tile')
     let ready = 2 // wait for flash and fadeout animation
-
-    emptyTile.addEventListener('animationend', () => {
+    let start = () => {
       if (--ready) {
+        emptyTile.removeEventListener('animationend', start)
+
         setTimeout(() => {
           this.setInitialTileState()
           this.timer = this.childViews.find(v =>
@@ -53,7 +54,9 @@ export default Ember.Component.extend({
           this.set('startTime', this.timer.startTime)
         }, 500)
       }
-    })
+    }
+
+    emptyTile.addEventListener('animationend', start)
   },
 
   didRender() {
@@ -69,6 +72,10 @@ export default Ember.Component.extend({
       this.timer.reset()
       this.puzzle.destroy()
       this.setupPuzzle()
+    },
+    solved() {
+      this.timer.stop()
+      this.sendAction('onsolved')
     }
   }
 })

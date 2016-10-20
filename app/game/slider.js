@@ -77,6 +77,7 @@ export default class Puzzle {
   }
 
   destroy() {
+    this.canvas.classList.remove('solved')
     this.canvas.innerHTML = ''
     this.canvas.removeEventListener('click', this.clickHandler, false)
   }
@@ -126,6 +127,7 @@ export default class Puzzle {
       this.updateBoard()
 
       if (isSolved(this.board)) {
+        this.canvas.classList.add('solved')
         this.solvedCallback.call(null)
       }
     }

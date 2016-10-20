@@ -1,9 +1,12 @@
 import Ember from 'ember'
 
-export default Ember.Route.extend({
+const { Route, run } = Ember
+const ONE_SECOND = 1000
+
+export default Route.extend({
   actions: {
     solvedPuzzle() {
-      this.transitionTo('play-success')
+      setTimeout(run.bind(() => this.transitionTo('play-success')), ONE_SECOND)
     }
   }
 })
