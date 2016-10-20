@@ -4,4 +4,10 @@ export default function() {
     this.toRoute('play'),
     this.use('toUp')
   )
+
+  this.transition(
+    this.fromRoute('play'),
+    this.toRoute('play-success'),
+    this.use('toUp')
+  )
 }

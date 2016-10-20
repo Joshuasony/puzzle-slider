@@ -10,9 +10,31 @@ export default Ember.Component.extend({
   startTime: null,
   puzzle: null,
 
+  //initialTileState: [
+  //  [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ] ],
+  //  [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ] ],
+  //  [ [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ],
+  //  [ [ 3, 0 ], [ 3, 1 ], [ 3, 3 ], [ 3, 2 ] ]
+  //],
+
+  setInitialTileState() {
+    if (!this.initialTileState) {
+      this.puzzle.randomizeBoard()
+
+      return
+    }
+
+    this.initialTileState.forEach((row, y) => {
+      row.forEach(([ tileY, tileX ], x) => {
+        this.puzzle.board[y][x].x = tileX
+        this.puzzle.board[y][x].y = tileY
+      })
+    })
+  },
+
   setupPuzzle() {
     this.puzzle = new Puzzle(this.element.querySelector('puzzle-board'))
-    this.solvedCallback = () => this.sendAction('onsolved')
+    this.puzzle.solvedCallback = () => this.sendAction('onsolved')
     this.puzzle.start()
 
     let [ emptyTile ] = this.element.getElementsByClassName('empty-tile')
@@ -21,7 +43,7 @@ export default Ember.Component.extend({
     emptyTile.addEventListener('animationend', () => {
       if (--ready) {
         setTimeout(() => {
-          this.puzzle.randomizeBoard()
+          this.setInitialTileState()
           this.timer = this.childViews.find(v =>
             v.element.tagName === 'GAME-TIMER'
           )

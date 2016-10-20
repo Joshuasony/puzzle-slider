@@ -1,8 +1,22 @@
 /* global Hammer */
 /* eslint-env browser */
-/* eslint-disable no-magic-numbers, no-unexpected-multiline */
+/* eslint-disable no-magic-numbers */
+/* eslint-disable no-unexpected-multiline */
+/* eslint-disable no-extend-native */
 
 const { abs, floor, random } = Math
+
+if (!Array.prototype.fill) {
+  Object.defineProperty(Array.prototype, 'fill', {
+    value: function ArrayFillPolyfill(value) {
+      for (let i = 0; i < this.length; i++) {
+        this[i] = value
+      }
+
+      return this
+    }
+  })
+}
 
 class Tile {
   constructor(x, y, empty) {
@@ -278,5 +292,5 @@ function eq(val, ...args) {
 }
 
 function a(len, mapper) {
-  return Array(...Array(len)).map(mapper)
+  return Array(len).fill(undefined).map(mapper)
 }

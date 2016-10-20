@@ -85,3 +85,12 @@ slider-tile:hover {
   animation: flash 300ms 600ms 2,
              fadeout 400ms 1200ms forwards;
 }
+
+puzzle-board.solved, .solved > slider-tile {
+  transition: border-color 500ms;
+  border-color: rgba(0,0,0,0);
+}
+
+.solved > .empty-tile {
+  animation: fadeout 400ms reverse;
+}
