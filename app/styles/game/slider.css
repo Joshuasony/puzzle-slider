@@ -68,6 +68,11 @@ slider-tile:hover {
     to { opacity: 0; }
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @keyframes flash {
    50% { filter: brightness(3); }
   100% { filter: none; }
@@ -85,5 +90,5 @@ puzzle-board.solved, .solved > slider-tile {
 }
 
 .solved > .empty-tile {
-  animation: fadeout 400ms reverse;
+  animation: fadein 400ms;
 }
