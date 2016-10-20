@@ -1,7 +1,7 @@
 {
   "name": "puzzle-slide-app",
   "dependencies": {
-    "ember": "2.9.0-beta.5",
+    "ember": "~2.9.0",
     "ember-cli-shims": "0.1.1",
     "hammer-time": "1.0.0",
     "hammer.js": "2.0.6",
