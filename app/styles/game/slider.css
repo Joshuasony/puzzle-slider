@@ -37,6 +37,8 @@ slider-tile {
   contain: strict;
   transition: transform 300ms;
   position: absolute;
+  left: -1px;
+  top: -1px;
   border: 1px solid black;
   background-color: white;
   box-sizing: border-box;
