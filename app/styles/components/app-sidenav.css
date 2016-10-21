@@ -13,6 +13,26 @@
   background-size: 93px;
 }
 
+.sidenav-container md-sidenav > md-toolbar > .md-toolbar-tools {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.sidenav-container md-sidenav .game-timer-best {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.sidenav-container md-sidenav .game-timer-best > .paper-icon {
+  position: absolute;
+  top: 32px;
+  left: 8px;
+}
+
+.sidenav-container md-sidenav .game-timer-best-date {
+  font-size: 0.666rem;
+}
+
 .menu-logo {
   width: 50%;
 }

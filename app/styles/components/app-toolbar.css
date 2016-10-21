@@ -6,3 +6,7 @@
   z-index: 1;
   width: 100% !important;
 }
+
+.app-toolbar + * md-toolbar {
+  background-color: #46bcc0 !important;
+}

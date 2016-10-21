@@ -76,7 +76,10 @@ export default Component.extend({
     },
     solved() {
       this.get('timer').stop()
-      this.sendAction('onsolved', this.get('timer.endTime'))
+
+      let solveTime = this.get('timer.endTime') - this.get('startTime')
+
+      this.sendAction('onsolved', solveTime)
     }
   }
 })

@@ -1,0 +1,9 @@
+{{#if bestTime.value}}
+  {{yield
+    (hash
+      time=bestTime.value
+      date=bestTime.date
+      formatted=bestTime.formatted
+      )
+    }}
+{{/if}}

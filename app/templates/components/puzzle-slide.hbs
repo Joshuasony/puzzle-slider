@@ -1,6 +1,12 @@
 {{#ember-wormhole to="subtoolbar"}}
   {{#paper-toolbar accent=true as |toolbar|}}
     {{~game-timer registerOn=this~}}
+    {{#best-time as |bestTime|}}
+      <div class="game-timer-best">
+        {{paper-icon "timer" size=16}}
+        {{bestTime.formatted}}
+      </div>
+    {{/best-time}}
   {{/paper-toolbar}}
 {{/ember-wormhole}}
 <puzzle-board class="md-whiteframe-3dp" tiles={{tiles}}></puzzle-board>

@@ -7,9 +7,20 @@
   }}
     {{#paper-toolbar as |toolbar|}}
       {{#toolbar.tools}}
-        <span class="flex"></span>
-        <img class="menu-logo" width="310" height="80" alt="Puzzle ITC GmbH"
-            src="assets/pictures/puzzle_classic_bg_rgb.svg">
+        <div class="layout-row">
+          <span class="flex"></span>
+          <img class="menu-logo" width="310" height="80" alt="Puzzle ITC GmbH"
+              src="assets/pictures/puzzle_classic_bg_rgb.svg">
+        </div>
+        {{#best-time tagName="div" class="layout-column" as |bestTime|}}
+          <div class="game-timer-best">
+            {{paper-icon "timer" size=48}}
+            {{bestTime.formatted}}
+          </div>
+          <div class="game-timer-best-date">
+            {{moment-format bestTime.date 'DD.MM.YYYY[ - ]HH:mm'}}
+          </div>
+        {{/best-time}}
       {{/toolbar.tools}}
     {{/paper-toolbar}}
     {{#paper-content padding=true}}
