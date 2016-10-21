@@ -50,7 +50,7 @@ export default Component.extend({
 
     let [ emptyTile ] = this.element.getElementsByClassName('empty-tile')
     let ready = 2 // wait for flash and fadeout animation
-    let start = (e) => { console.log(ready, e)
+    let start = () => {
       if (!--ready) {
         emptyTile.removeEventListener('animationend', start)
         run.later(() => {
