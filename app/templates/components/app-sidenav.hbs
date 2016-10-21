@@ -6,7 +6,11 @@
     onToggle=(action (mut open))
   }}
     {{#paper-toolbar as |toolbar|}}
-      {{#paper-toolbar-tools}}PuzzleSlide{{/paper-toolbar-tools}}
+      {{#toolbar.tools}}
+        <span class="flex"></span>
+        <img class="menu-logo" width="310" height="80" alt="Puzzle ITC GmbH"
+            src="assets/pictures/puzzle_classic_bg_rgb.svg">
+      {{/toolbar.tools}}
     {{/paper-toolbar}}
     {{#paper-content padding=true}}
       {{#paper-list}}

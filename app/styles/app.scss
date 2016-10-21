@@ -2,6 +2,7 @@
 @import 'custom-paper';
 @import 'reset';
 @import 'game/slider';
+@import 'components/app-sidenav';
 @import 'components/app-toolbar';
 @import 'components/game-timer';
 @import 'components/puzzle-slide';
@@ -14,6 +15,9 @@
 
 body {
   background-color: $base-background-color;
+  background-image: url(pictures/background.svg);
+  background-position: bottom right;
+  background-repeat: no-repeat;
   color: rgba(255, 255, 255, 0.87);
 }
 
@@ -25,12 +29,4 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.sidenav-container {
-  min-height: 100vh;
-}
-
-.sidenav-container .md-list-item-inner md-icon {
-  margin-left: 0;
 }

@@ -1,0 +1,18 @@
+.sidenav-container {
+  min-height: 100vh;
+}
+
+.sidenav-container .md-list-item-inner md-icon {
+  margin-left: 0;
+}
+
+.sidenav-container md-sidenav > md-toolbar {
+  height: 124px;
+  background-image: url(pictures/menu-background.svg);
+  background-repeat: no-repeat;
+  background-size: 93px;
+}
+
+.menu-logo {
+  width: 50%;
+}
