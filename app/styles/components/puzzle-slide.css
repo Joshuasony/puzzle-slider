@@ -2,6 +2,7 @@ puzzle-slide > puzzle-board {
   margin: 10px 16px;
   background-color: #46bcc0;
   border: none;
+  width: calc(var(--width) + 1px);
   height: calc(var(--height) + 1px);
 }
 
@@ -11,8 +12,8 @@ puzzle-slide > puzzle-board::before {
 
 puzzle-slide > puzzle-board > slider-tile,
 puzzle-slide > puzzle-board > slider-tile-shadow {
-  top: 0.5px;
-  left: 0.5px;
+  top: 1px;
+  left: 1px;
   width: calc(var(--tile-width) - 1px);
   height: calc(var(--tile-height) - 1px);
 }
@@ -49,7 +50,21 @@ game-timer {
   margin-top: 0.33rem;
 }
 
+#subtoolbar game-timer {
+  margin-top: 1rem;
+}
+
 #subtoolbar .game-timer-best {
   font-size: 1rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+#subtoolbar .game-timer-best .paper-icon {
+  margin-top: -4px;
+}
+
+#subtoolbar .md-icon-button {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-right: 54px;
 }

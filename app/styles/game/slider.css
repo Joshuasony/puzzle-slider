@@ -89,7 +89,7 @@ slider-tile:hover + slider-tile-shadow {
   100% { filter: none; }
 }
 
-.empty-tile {
+puzzle-board > .empty-tile {
   transition: none;
   animation: flash 300ms 600ms 2,
              fadeout 400ms 1200ms forwards;

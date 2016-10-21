@@ -86,6 +86,7 @@ export default class Puzzle {
     this.onslide = noop
 
     this.board = createBoard(this.tileCount)
+    this.initBoard()
   }
 
   destroy() {
@@ -94,13 +95,7 @@ export default class Puzzle {
     this.canvas.removeEventListener('click', this.clickHandler, false)
   }
 
-  start() {
-    this.canvas.addEventListener('click', this.clickHandler, false)
-
-    if (typeof Hammer !== 'undefined') {
-      setupSwipes(this)
-    }
-
+  initBoard() {
     this.updateBoard()
 
     if (!this.canvas.children.length) {
@@ -119,6 +114,14 @@ export default class Puzzle {
             document.createDocumentFragment()
           )
       )
+    }
+  }
+
+  start() {
+    this.canvas.addEventListener('click', this.clickHandler, false)
+
+    if (typeof Hammer !== 'undefined') {
+      setupSwipes(this)
     }
 
     return this

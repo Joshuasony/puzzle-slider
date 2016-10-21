@@ -6,12 +6,13 @@ const { Component, run } = Ember
 
 export default Component.extend({
   tagName: 'puzzle-slide',
-  classNames: [ 'layout-column', 'layout-align-start-center' ],
+  classNames: [ 'flex', 'layout-column', 'layout-align-center-center' ],
   attributeBindings: [ 'tiles' ],
   tiles: 4,
   startTime: null,
   puzzle: null,
   timer: null,
+  playing: false,
 
   initialTileState: [
     [ [ 1, 0 ], [ 2, 3 ], [ 1, 2 ], [ 0, 1 ] ],
@@ -44,30 +45,36 @@ export default Component.extend({
   },
 
   setupPuzzle() {
+    this.set('playing', false)
     this.puzzle = new Puzzle(this.element.querySelector('puzzle-board'))
-    this.puzzle.onsolved = () => this.send('solved')
-    this.puzzle.onslide = tile => console.log(tile)
-    this.puzzle.start()
 
     let [ emptyTile ] = this.element.getElementsByClassName('empty-tile')
     let ready = 2 // wait for flash and fadeout animation
-    let start = () => {
-      if (--ready) {
+    let start = (e) => { console.log(ready, e)
+      if (!--ready) {
         emptyTile.removeEventListener('animationend', start)
-
-        setTimeout(run.bind(() => {
+        run.later(() => {
           this.setInitialTileState()
-          this.get('timer').start()
-          this.set('startTime', this.get('timer.startTime'))
-        }), 500)
+          this.$('slider-tile').on('click.start', () => this.start())
+        }, 500)
       }
     }
 
     emptyTile.addEventListener('animationend', start)
   },
 
-  didRender() {
-    this.setupPuzzle()
+  start() {
+    this.$('slider-tile').off('click.start')
+    this.puzzle.onsolved = () => this.send('solved')
+    this.puzzle.onslide = tile => console.log(tile)
+    this.puzzle.start()
+    this.set('playing', true)
+    this.get('timer').start()
+    this.set('startTime', this.get('timer.startTime'))
+  },
+
+  didInsertElement() {
+    run.next(() => this.setupPuzzle())
   },
 
   willDestroyElement() {
@@ -75,10 +82,15 @@ export default Component.extend({
   },
 
   actions: {
-    restart() {
-      this.get('timer').reset()
-      this.puzzle.destroy()
-      this.setupPuzzle()
+    toggle() {
+      if (this.get('playing')) {
+        this.get('timer').reset()
+        this.puzzle.destroy()
+        this.setupPuzzle()
+      }
+      else {
+        this.start()
+      }
     },
     solved() {
       this.get('timer').stop()
