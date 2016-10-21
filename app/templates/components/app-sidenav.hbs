@@ -5,16 +5,16 @@
     open=open
     onToggle=(action (mut open))
   }}
-    {{#paper-toolbar as |toolbar|}}
-      {{#toolbar.tools}}
-        <div class="layout-row">
+    {{#paper-toolbar class="layout-column" as |toolbar|}}
+      {{#toolbar.tools class="flex"}}
+        <div class="flex layout-row">
           <span class="flex"></span>
           <img class="menu-logo" width="310" height="80" alt="Puzzle ITC GmbH"
               src="assets/pictures/puzzle_classic_bg_rgb.svg">
         </div>
         {{#best-time tagName="div" class="layout-column" as |bestTime|}}
           <div class="game-timer-best">
-            {{paper-icon "timer" size=48}}
+            {{paper-icon "timer" size=42}}
             {{bestTime.formatted}}
           </div>
           <div class="game-timer-best-date">

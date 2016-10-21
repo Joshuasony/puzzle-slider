@@ -1,3 +1,4 @@
-.menu-item.active {
+.menu-item.active,
+.menu-item.active .paper-icon {
   color: #3fa8e0;
 }

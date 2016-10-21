@@ -30,3 +30,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.slick-dots li button::before {
+  color: white !important;
+  font-size: 8px;
+}
