@@ -1,5 +1,9 @@
-{{game-timer}}
-<puzzle-board tiles={{tiles}}></puzzle-board>
+{{#ember-wormhole to="subtoolbar"}}
+  {{#paper-toolbar accent=true as |toolbar|}}
+    {{~game-timer registerOn=this~}}
+  {{/paper-toolbar}}
+{{/ember-wormhole}}
+<puzzle-board class="md-whiteframe-3dp" tiles={{tiles}}></puzzle-board>
 {{#paper-button primary=true onClick=(action 'restart')}}
   Retry
 {{/paper-button}}

@@ -1,0 +1,58 @@
+@import 'color-palette';
+
+$color-puzzle-color-1: (
+  '500': #1e5a96,
+  '600': #1e5a96,
+  'contrast': $light-contrast-color
+);
+
+$color-puzzle-color-2: (
+  '500': #3b7bbe,
+  'contrast': $light-contrast-color
+);
+
+$color-puzzle-color-3: (
+  '500': #238bca
+);
+
+$color-puzzle-color-4: (
+  '500': #3fa8e0,
+  '600': #3fa8e0,
+  '700': #3fa8e0,
+  'A200': #3fa8e0,
+  'A700': #3fa8e0,
+  'contrast': $light-contrast-color
+);
+
+$color-puzzle-color-5: (
+  '500': #46bcc0
+);
+
+$color-puzzle-color-6: (
+  '500': #2c97a6
+);
+
+$color-puzzle-color-7: (
+  '500': #69b978
+);
+
+$color-puzzle-color-8: (
+  '500': #61b44b
+);
+
+$colors: map-merge($colors, (
+  'puzzle-color-1': $color-puzzle-color-1,
+  'puzzle-color-2': $color-puzzle-color-2,
+  'puzzle-color-3': $color-puzzle-color-3,
+  'puzzle-color-4': $color-puzzle-color-4,
+  'puzzle-color-5': $color-puzzle-color-5,
+  'puzzle-color-6': $color-puzzle-color-6,
+  'puzzle-color-7': $color-puzzle-color-7,
+  'puzzle-color-8': $color-puzzle-color-8,
+));
+
+$primary: 'puzzle-color-1';
+$accent: 'puzzle-color-4';
+$background: 'grey';
+$dark: true;
+$base-background-color: #3b7bbe;

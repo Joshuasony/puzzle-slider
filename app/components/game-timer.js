@@ -6,7 +6,7 @@ import {
   padEnd
 } from 'ember-pad/utils/pad'
 
-const { Component } = Ember
+const { Component, computed } = Ember
 
 const isAndroid = /Android/.test(navigator.userAgent)
 const isAndroid4 = /Android 4\./.test(navigator.userAgent)
@@ -27,6 +27,14 @@ export default Component.extend({
   endTime: null,
   lastFrame: null,
   msEl: null,
+
+  registerAs: 'timer',
+
+  registerOn: computed({
+    set(key, value) {
+      value.set(this.get('registerAs'), this)
+    }
+  }),
 
   animate: !isAndroid4,
 

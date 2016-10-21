@@ -11,12 +11,13 @@ export default Component.extend({
   tiles: 4,
   startTime: null,
   puzzle: null,
+  timer: null,
 
   // initialTileState: [
   //   [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ] ],
   //   [ [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ] ],
   //   [ [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ],
-  //   [ [ 3, 0 ], [ 3, 1 ], [ 3, 3 ], [ 3, 2 ] ]
+  //   [ [ 3, 0 ], [ 3, 3 ], [ 3, 1 ], [ 3, 2 ] ]
   // ],
 
   setInitialTileState() {
@@ -38,7 +39,8 @@ export default Component.extend({
 
   setupPuzzle() {
     this.puzzle = new Puzzle(this.element.querySelector('puzzle-board'))
-    this.puzzle.solvedCallback = () => this.send('solved')
+    this.puzzle.onsolved = () => this.send('solved')
+    this.puzzle.onslide = tile => console.log(tile)
     this.puzzle.start()
 
     let [ emptyTile ] = this.element.getElementsByClassName('empty-tile')
@@ -49,8 +51,8 @@ export default Component.extend({
 
         setTimeout(run.bind(() => {
           this.setInitialTileState()
-          this.timer.start()
-          this.set('startTime', this.timer.startTime)
+          this.get('timer').start()
+          this.set('startTime', this.get('timer.startTime'))
         }), 500)
       }
     }
@@ -59,9 +61,6 @@ export default Component.extend({
   },
 
   didRender() {
-    this.timer = this.childViews.find(v =>
-      v.element.tagName === 'GAME-TIMER'
-    )
     this.setupPuzzle()
   },
 
@@ -71,13 +70,13 @@ export default Component.extend({
 
   actions: {
     restart() {
-      this.timer.reset()
+      this.get('timer').reset()
       this.puzzle.destroy()
       this.setupPuzzle()
     },
     solved() {
-      this.timer.stop()
-      this.sendAction('onsolved', this.timer.endTime)
+      this.get('timer').stop()
+      this.sendAction('onsolved', this.get('timer.endTime'))
     }
   }
 })

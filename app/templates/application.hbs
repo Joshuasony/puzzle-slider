@@ -1,4 +1,9 @@
-{{#app-sidenav}}
+{{#app-sidenav currentRouteName=currentRouteName}}
   {{~app-toolbar~}}
-  {{~liquid-outlet class="application-outlet flex layout-column md-padding"~}}
+  {{#liquid-spacer class="md-whiteframe-3dp"}}
+    <div id="subtoolbar"></div>
+  {{/liquid-spacer}}
+  <main class="flex layout-column" role="main">
+    {{~liquid-outlet class="application-outlet flex layout-column md-padding"~}}
+  </main>
 {{/app-sidenav}}

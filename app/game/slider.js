@@ -21,6 +21,7 @@ if (!Array.prototype.fill) {
 class Tile {
   constructor(x, y, empty) {
     this.el = document.createElement('slider-tile')
+    this.shadowEl = document.createElement('slider-tile-shadow')
     this.el.style.setProperty('--tile-x', x)
     this.el.style.setProperty('--tile-y', y)
     this.el.classList.toggle('empty-tile', empty)
@@ -38,7 +39,7 @@ class Tile {
   }
 
   set x(val) {
-    this.el.style.setProperty('--tile-pos-x', val)
+    this._setProperty('--tile-pos-x', val)
   }
 
   get y() {
@@ -46,7 +47,16 @@ class Tile {
   }
 
   set y(val) {
-    this.el.style.setProperty('--tile-pos-y', val)
+    this._setProperty('--tile-pos-y', val)
+  }
+
+  _setProperty(prop, val) {
+    this.el.style.setProperty(prop, val)
+    this.shadowEl.style.setProperty(prop, val)
+  }
+
+  toJSON() {
+    return [ this._x, this._y ]
   }
 }
 
@@ -72,6 +82,8 @@ export default class Puzzle {
     this.width = canvas.getAttribute('width')
     this.height = canvas.getAttribute('height')
     this.clickHandler = this.clickHandler.bind(this)
+    this.onsolved = noop
+    this.onslide = noop
 
     this.board = createBoard(this.tileCount)
   }
@@ -98,7 +110,12 @@ export default class Puzzle {
         this.board
           .reduce((acc, val) => acc.concat(val), [])
           .reduce(
-            (tiles, tile) => (tiles.appendChild(tile.el), tiles),
+            (tiles, tile) => {
+              tiles.appendChild(tile.el)
+              tiles.appendChild(tile.shadowEl)
+
+              return tiles
+            },
             document.createDocumentFragment()
           )
       )
@@ -115,6 +132,7 @@ export default class Puzzle {
 
       if (distance(fromTile.x, fromTile.y, toTile.x, toTile.y) === 1) {
         this.slideTile(toTile, fromTile)
+        this.onslide(fromTile.toJSON())
       }
     }
   }
@@ -128,7 +146,7 @@ export default class Puzzle {
 
       if (isSolved(this.board)) {
         this.canvas.classList.add('solved')
-        this.solvedCallback.call(null)
+        this.onsolved.call(null)
       }
     }
   }
@@ -260,7 +278,7 @@ function setupSwipes(puzzle) {
   })
 
   mc.on('swipe', e => { // eslint-disable-line complexity
-    let [ emptyTile ] = this.canvas.getElementsByClassName('empty-tile')
+    let [ emptyTile ] = puzzle.canvas.getElementsByClassName('empty-tile')
     let toTile = Tile.fromElement(puzzle.board, emptyTile)
     let { x, y } = toTile
 
@@ -300,3 +318,5 @@ function eq(val, ...args) {
 function a(len, mapper) {
   return Array(len).fill().map(mapper)
 }
+
+function noop() {} // eslint-disable-line no-empty-function

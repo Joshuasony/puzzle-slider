@@ -1,7 +1,9 @@
-{{#paper-toolbar as |toolbar|}}
+{{#paper-toolbar class="app-toolbar md-whiteframe-1dp" as |toolbar|}}
   {{#toolbar.tools}}
-    {{#paper-button iconButton=true click=(action "toggleMenu")}}
-      {{paper-icon "menu"}}
-    {{/paper-button}}
+    {{#unless media.isGtSm}}
+      {{#paper-button iconButton=true click=(action "toggleMenu")}}
+        {{paper-icon "menu"}}
+      {{/paper-button}}
+    {{/unless}}
   {{/toolbar.tools}}
 {{/paper-toolbar}}

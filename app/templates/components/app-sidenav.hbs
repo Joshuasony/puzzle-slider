@@ -10,9 +10,28 @@
     {{/paper-toolbar}}
     {{#paper-content padding=true}}
       {{#paper-list}}
-        {{#paper-item onClick=(transition-to 'intro')}}
-          Tutorial
-        {{/paper-item}}
+        {{#menu-item
+          active=(eq currentRouteName 'play')
+          onClick=(transition-to 'play')
+          }}
+          {{paper-icon "play-circle-filled"}}
+          <div class="md-list-item-text">Puzzle ITC Slider</div>
+        {{/menu-item}}
+        {{#menu-item}}
+          {{paper-icon "stars"}}
+          <div class="md-list-item-text">Leaderboard</div>
+        {{/menu-item}}
+        {{#menu-item}}
+          {{paper-icon "help"}}
+          <div class="md-list-item-text">Über uns</div>
+        {{/menu-item}}
+        {{#menu-item
+          active=(eq currentRouteName 'intro')
+          onClick=(transition-to 'intro')
+          }}
+          {{paper-icon "play-arrow"}}
+          <div class="md-list-item-text">Anleitung</div>
+        {{/menu-item}}
       {{/paper-list}}
     {{/paper-content}}
   {{/paper-sidenav}}

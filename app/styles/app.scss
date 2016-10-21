@@ -1,12 +1,20 @@
+@import 'puzzle-theme';
 @import 'custom-paper';
 @import 'reset';
 @import 'game/slider';
+@import 'components/app-toolbar';
 @import 'components/game-timer';
 @import 'components/puzzle-slide';
+@import 'components/menu-item';
 @import 'pages/intro';
 
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  background-color: $base-background-color;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 [data-ember-action] {
@@ -21,4 +29,8 @@
 
 .sidenav-container {
   min-height: 100vh;
+}
+
+.sidenav-container .md-list-item-inner md-icon {
+  margin-left: 0;
 }

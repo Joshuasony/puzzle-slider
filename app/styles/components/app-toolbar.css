@@ -1,0 +1,7 @@
+.app-toolbar {
+  z-index: 2;
+}
+
+.app-toolbar + * {
+  z-index: 1;
+}
