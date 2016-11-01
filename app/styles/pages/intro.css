@@ -1,13 +1,28 @@
+.page-intro .application-outlet,
+.page-intro .liquid-child {
+  overflow: visible;
+}
+
+.page-intro md-toolbar {
+  transform: translateY(-100%);
+}
+
+.page-intro md-card-content {
+  background: linear-gradient(to bottom, #369acc, #195c9b);
+}
+
 .page-intro .slick-slider {
   flex: 1;
   margin-bottom: 0;
   padding-bottom: 10vh;
+  text-align: center;
 }
 
 .page-intro .slick-list {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: visible;
 }
 
 .page-intro .slick-track {
@@ -16,4 +31,29 @@
 
 .page-intro .slick-dots {
   bottom: 5vh;
+}
+
+.page-intro figure {
+  margin: 0 auto;
+  width: 96px;
+}
+
+.page-intro figure > img {
+  max-width: 100%;
+}
+
+.page-intro .box {
+  position: relative;
+}
+
+.page-intro .box .paper-button {
+  margin-top: 2.5rem;
+}
+
+.page-intro .box:first-child figure {
+  --width: 250px;
+  position: absolute;
+  width: var(--width);
+  left: calc(50% + 20px - var(--width) / 2);
+  bottom: calc(-10vh - 50px);
 }

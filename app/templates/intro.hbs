@@ -1,16 +1,42 @@
-{{#slick-slider arrows=false dots=true}}
+{{#slick-slider arrows=false dots=true infinite=false}}
   <div class="box">
-    Intro 1
+    <h2>Puzzle ITC Slider</h2>
+    <p>
+      Schiebe die einzelnen<br>
+      Teile zu einem Bild.
+    </p>
+    <figure>
+      <img src="assets/pictures/finger-all.png">
+    </figure>
   </div>
+
   <div class="box">
-    Intro 2
+    <h2>Wettbewerb</h2>
+    <p>
+      Du bist schneller als<br>
+      alle anderen?
+    </p>
+    <p>
+      Der Schnellste<br>
+      entscheidet, wohin<br>
+      Puzzle 1'500 Franken<br>
+      spendet.
+    </p>
+    <figure>
+      <img src="assets/pictures/present.svg">
+    </figure>
   </div>
+
   <div class="box">
-    Intro 3
+    <h2>Frohe Weihnachten</h2>
+    <p>&hellip; und &laquo;es guets nöis&raquo;<br>wünscht dir Puzzle ITC.</p>
+    <figure>
+      <img src="assets/pictures/tree.svg">
+    </figure>
 
     <div class="layout-row layout-align-center-center">
       {{#paper-button accent=true raised=true onClick=(route-action 'play')}}
-        Start!
+        Itz aber hü!
       {{/paper-button}}
     </div>
   </div>
