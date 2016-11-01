@@ -1,10 +1,5 @@
-/* eslint-disable no-magic-numbers */
 import Ember from 'ember'
-
-import {
-  padStart,
-  padEnd
-} from 'ember-pad/utils/pad'
+import { formatTimer } from '../helpers/format-timer'
 
 const { Service, computed } = Ember
 
@@ -34,12 +29,18 @@ export default Service.extend({
     }
   }),
 
-  formatted: computed('value', function() {
-    let time = this.get('value')
-    let milliseconds = padEnd(~~(time) % 1000, 3)
-    let seconds = padStart(~~(time / 1000) % 60, 2)
-    let minutes = padStart(~~(time / (1000 * 60)) % 60, 2)
+  latest: computed({
+    get() {
+      return Number(localStorage.getItem('puzzle-slide-latest-time')) || 0
+    },
+    set(key, value) {
+      localStorage.setItem('puzzle-slide-latest-time', Number(value))
 
-    return `${minutes}:${seconds}.${milliseconds}`
+      return Number(value) || 0
+    }
+  }),
+
+  formatted: computed('value', function() {
+    return formatTimer([ this.get('value') ])
   })
 })

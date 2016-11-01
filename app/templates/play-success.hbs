@@ -1,7 +1,47 @@
-<h2>Geschafft!</h2>
+<div class="puzzle-solved flex">
+  <h2>Geschafft!</h2>
 
-<div class="layout-row layout-align-center-center">
-  {{#paper-button accent=true raised=true onClick=(transition-to 'play')}}
-    Neu versuchen
-  {{/paper-button}}
+  {{#best-time as |bestTime|}}
+    <p>
+      {{#if (eq bestTime.latest bestTime.time)}}
+        (very niiiiiiice)
+      {{else}}
+        (äntlech&hellip;)
+      {{/if}}
+    </p>
+
+    <div class="timer-time flex">
+      <div>
+        {{paper-icon "timer" size=56}}
+        {{format-timer bestTime.latest}}
+      </div>
+    </div>
+
+    {{#if (eq bestTime.latest bestTime.time)}}
+      <p>
+        Wow - neue Bestzeit!<br>
+        Übermitteln und am<br>
+        Wettbewerb teilnehmen?
+      </p>
+      <div class="layout-row layout-align-center-center">
+        {{#paper-button onClick=(transition-to 'index')}}
+          Nein
+        {{/paper-button}}
+        {{#paper-button primary=true raised=true onClick=(transition-to 'submit-time')}}
+          Yesss
+        {{/paper-button}}
+      </div>
+    {{else}}
+      <p>
+        Das war schnell. Aber nicht<br>
+        schnell genug. Versuchs<br>
+        gleich nochmal.
+      </p>
+      <div class="layout-row layout-align-center-center">
+        {{#paper-button primary=true raised=true onClick=(transition-to 'play')}}
+          Neu versuchen
+        {{/paper-button}}
+      </div>
+    {{/if}}
+  {{/best-time}}
 </div>

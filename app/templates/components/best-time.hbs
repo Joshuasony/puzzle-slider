@@ -1,6 +1,7 @@
 {{#if bestTime.value}}
   {{yield
     (hash
+      latest=bestTime.latest
       time=bestTime.value
       date=bestTime.date
       formatted=bestTime.formatted

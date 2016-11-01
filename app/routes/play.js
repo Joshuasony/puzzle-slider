@@ -10,11 +10,13 @@ export default Route.extend({
     solvedPuzzle(solveTime) {
       let bestTime = this.get('bestTime.value')
 
+      this.set('bestTime.latest', solveTime)
+
       if (!bestTime || solveTime < bestTime) {
         this.set('bestTime.value', solveTime)
       }
 
-      setTimeout(run.bind(() => this.transitionTo('play-success')), ONE_SECOND)
+      run.later(() => this.transitionTo('play-success'), ONE_SECOND)
     }
   }
 })

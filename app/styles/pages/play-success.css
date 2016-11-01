@@ -1,0 +1,44 @@
+.page-play-success main {
+  background-color: #46bcc0;
+}
+
+.puzzle-solved {
+  display: flex;
+  flex-direction: column;
+  background-image: url(pictures/star.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+}
+
+.puzzle-solved h2 {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 3rem;
+}
+.puzzle-solved h2 + p {
+  margin-top: 0;
+}
+.puzzle-solved p {
+  font-size: 1.5rem;
+}
+
+.puzzle-solved .timer-time {
+  font-size: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.puzzle-solved .timer-time .paper-icon {
+  color: rgba(255, 255, 255, 0.87);
+  line-height: 0.8;
+}
+
+@media screen and (min-width: 321px) {
+  .puzzle-solved h2 {
+    font-size: 3.5rem;
+  }
+  .puzzle-solved .timer-time {
+    font-size: 56px;
+  }
+}
