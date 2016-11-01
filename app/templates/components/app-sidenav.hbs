@@ -36,7 +36,10 @@
           {{paper-icon "stars"}}
           <div class="md-list-item-text">Leaderboard</div>
         {{/menu-item}}
-        {{#menu-item}}
+        {{#menu-item
+          active=(eq currentRouteName 'about')
+          onClick=(transition-to 'about')
+          }}
           {{paper-icon "help"}}
           <div class="md-list-item-text">Über uns</div>
         {{/menu-item}}

@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('intro')
   this.route('play')
   this.route('play-success')
+  this.route('about')
 })
 
 export default Router

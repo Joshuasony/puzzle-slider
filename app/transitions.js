@@ -10,4 +10,10 @@ export default function() {
     this.toRoute('play-success'),
     this.use('toUp')
   )
+
+  this.transition(
+    this.toRoute('about'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  )
 }
