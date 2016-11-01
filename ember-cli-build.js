@@ -3,6 +3,21 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app')
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    fingerprint: {
+      extensions: [
+        'js',
+        'css',
+        'png',
+        'jpg',
+        'gif',
+        'map',
+        'svg',
+        'eot',
+        'ttf',
+        'woff',
+        'woff2'
+      ]
+    },
     autoprefixer: {
       browsers: [
         'Chrome >= 50',
