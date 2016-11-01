@@ -1,5 +1,6 @@
 .app-toolbar {
   z-index: 2;
+  transition: transform 300ms;
 }
 
 .app-toolbar + * {
