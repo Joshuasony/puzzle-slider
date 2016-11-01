@@ -55,6 +55,10 @@ slider-tile, slider-tile + slider-tile-shadow {
   );
 }
 
+slider-tile:not(.empty-tile) {
+  cursor: pointer;
+}
+
 slider-tile {
   border: 1px solid black;
   background-color: white;
