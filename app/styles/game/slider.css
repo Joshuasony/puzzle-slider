@@ -28,6 +28,12 @@ puzzle-board {
   }
 }
 
+puzzle-board::before,
+slider-tile {
+  background-image: var(--src);
+  background-size: var(--width) var(--height);
+}
+
 puzzle-board::before {
   content: '';
   position: absolute;
@@ -35,8 +41,6 @@ puzzle-board::before {
   top: 0;
   right: 0;
   bottom: 0;
-  background-image: var(--src);
-  background-size: var(--width) var(--height);
   filter: opacity(30%) blur(1px) contrast(0.75) grayscale(1);
 }
 
@@ -64,8 +68,6 @@ slider-tile:not(.empty-tile) {
 slider-tile {
   border: 1px solid black;
   background-color: white;
-  background-image: var(--src);
-  background-size: var(--width) var(--height);
   background-position:
     calc(var(--tile-width) * var(--tile-x) * -1)
     calc(var(--tile-height) * var(--tile-y) * -1);
