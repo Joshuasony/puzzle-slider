@@ -3,7 +3,7 @@
   overflow: visible;
 }
 
-.page-intro md-toolbar {
+.page-intro .app-toolbar {
   transform: translateY(-105%);
 }
 
