@@ -48,9 +48,11 @@ slider-tile, slider-tile + slider-tile-shadow {
   top: -1px;
   width: calc(var(--tile-width));
   height: calc(var(--tile-height));
+  --translate-x: 0px;
+  --translate-y: 0px;
   transform: translate3d(
-    calc(var(--tile-width) * var(--tile-pos-x)),
-    calc(var(--tile-height) * var(--tile-pos-y)),
+    calc(var(--tile-width) * var(--tile-pos-x) + var(--translate-x)),
+    calc(var(--tile-height) * var(--tile-pos-y) + var(--translate-y)),
     0
   );
 }

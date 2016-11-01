@@ -4,7 +4,7 @@
 /* eslint-disable no-unexpected-multiline */
 /* eslint-disable no-extend-native */
 
-const { abs, floor, random } = Math
+const { max, min, abs, floor, random } = Math
 
 if (!Array.prototype.fill) {
   Object.defineProperty(Array.prototype, 'fill', {
@@ -39,7 +39,7 @@ class Tile {
   }
 
   set x(val) {
-    this._setProperty('--tile-pos-x', val)
+    this.setStyleProperty('--tile-pos-x', val)
   }
 
   get y() {
@@ -47,10 +47,10 @@ class Tile {
   }
 
   set y(val) {
-    this._setProperty('--tile-pos-y', val)
+    this.setStyleProperty('--tile-pos-y', val)
   }
 
-  _setProperty(prop, val) {
+  setStyleProperty(prop, val) {
     this.el.style.setProperty(prop, val)
     this.shadowEl.style.setProperty(prop, val)
   }
@@ -269,7 +269,7 @@ function setupSwipes(puzzle) {
   let mc = new Hammer.Manager(puzzle.canvas, {
     recognizers: [
       [
-        Hammer.Swipe, {
+        Hammer.Pan, {
           direction:
             Hammer.DIRECTION_LEFT |
             Hammer.DIRECTION_RIGHT |
@@ -280,34 +280,84 @@ function setupSwipes(puzzle) {
     ]
   })
 
-  mc.on('swipe', e => { // eslint-disable-line complexity
-    let [ emptyTile ] = puzzle.canvas.getElementsByClassName('empty-tile')
-    let toTile = Tile.fromElement(puzzle.board, emptyTile)
+  let emptyTile
+  let toTile
+  let fromTile
+  let deltaXA
+  let deltaYA
+  let tileWidth
+  let tileHeight
+
+  mc.on('panstart', () => {
+    emptyTile = puzzle.canvas.getElementsByClassName('empty-tile')[0]
+    toTile = Tile.fromElement(puzzle.board, emptyTile)
+
+    let computedStyle = window.getComputedStyle(toTile.el)
+
+    tileWidth = parseInt(computedStyle.width, 10)
+    tileHeight = parseInt(computedStyle.height, 10)
+  })
+
+  mc.on('panmove', e => {
+    deltaXA = abs(e.deltaX)
+    deltaYA = abs(e.deltaY)
+
+    if (deltaXA === deltaYA) {
+      return
+    }
+
     let { x, y } = toTile
 
-    switch (e.direction) {
-      case Hammer.DIRECTION_LEFT:
-        x++
-        break
-      case Hammer.DIRECTION_RIGHT:
-        x--
-        break
-      case Hammer.DIRECTION_UP:
-        y++
-        break
-      case Hammer.DIRECTION_DOWN:
-        y--
-        break
-      default:
-        return
+    if (deltaXA > deltaYA) {
+      x -= max(-1, min(1, e.deltaX))
+    }
+    else {
+      y -= max(-1, min(1, e.deltaY))
     }
 
-    let fromTile = puzzle.board[y] && puzzle.board[y][x]
+    let currentFromTile = puzzle.board[y] && puzzle.board[y][x]
 
+    if (fromTile && currentFromTile !== fromTile) {
+      cancelTileTranslate(fromTile)
+    }
+
+    if (!currentFromTile) {
+      return
+    }
+
+    currentFromTile.setStyleProperty('transition', 'none')
+
+    if (deltaXA > deltaYA) {
+      let translateX = max(min(e.deltaX, tileWidth), -tileWidth)
+
+      currentFromTile.setStyleProperty('--translate-x', `${translateX}px`)
+      currentFromTile.setStyleProperty('--translate-y', '0px')
+    }
+    else {
+      let translateY = max(min(e.deltaY, tileHeight), -tileHeight)
+
+      currentFromTile.setStyleProperty('--translate-x', '0px')
+      currentFromTile.setStyleProperty('--translate-y', `${translateY}px`)
+    }
+
+    fromTile = currentFromTile
+  })
+
+  mc.on('panend', () => {
     if (fromTile) {
-      puzzle.slideTile(toTile, fromTile)
+      cancelTileTranslate(fromTile)
+
+      if (deltaYA > tileHeight / 2 || deltaXA > tileWidth / 2) {
+        puzzle.slideTile(toTile, fromTile)
+      }
     }
   })
+
+  function cancelTileTranslate(tile) {
+    tile.setStyleProperty('transition', null)
+    tile.setStyleProperty('--translate-x', null)
+    tile.setStyleProperty('--translate-y', null)
+  }
 }
 
 function distance(x1, y1, x2, y2) {
