@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="110px" height="147px" viewBox="0 0 110 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
-    <title>Slice 1</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
-        <g id="01_corner_top_left">
-            <g id="Group">
-                <g>
-                    <polyline id="Shape" fill="#238BCA" points="0.0662820513 146.404967 0.0662820513 0.506411483 73.2007692 73.455689 0.0662820513 146.404967"></polyline>
-                    <polyline id="Shape" fill="#46BCC0" points="0.0662820513 0.506411483 73.2007692 0.506411483 36.6335256 36.9814019 0.0662820513 0.506411483"></polyline>
-                    <polyline id="Shape" fill="#3FA8E0" points="109.768013 36.9814019 73.2007692 73.455689 36.6335256 36.9814019 73.2007692 0.506411483 109.768013 36.9814019"></polyline>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 147"><g fill="none" fill-rule="evenodd" opacity=".8"><path fill="#238BCA" d="M.07 146.4V.5L73.2 73.47.07 146.4"/><path fill="#46BCC0" d="M.07.5H73.2L36.63 37 .07.5"/><path fill="#3FA8E0" d="M109.77 36.98L73.2 73.46 36.63 36.98 73.2.5 109.77 37"/></g></svg>

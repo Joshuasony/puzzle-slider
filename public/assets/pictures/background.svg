@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="251px" height="275px" viewBox="0 0 251 275" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
-    <title>Slice 1</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.802938433">
-        <g id="tangram" transform="translate(0.000000, 158.000000)">
-            <g id="01_corner_bottom_right">
-                <g id="Group">
-                    <polyline id="Shape" fill="#47B8B2" points="249.835737 116 83.6217949 116 166.728365 34.1552925 249.835737 116"></polyline>
-                    <polyline id="Shape" fill="#3D9ECC" points="191.070513 58.1262585 249.835737 0.254095238 249.835737 116 191.070513 58.1262585"></polyline>
-                    <polyline id="Shape" fill="#369096" points="83.6217949 116 125.175481 75.0772517 42.0689103 75.0772517 0.515224359 116 83.6217949 116"></polyline>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 251 275"><g fill="none" fill-rule="evenodd" opacity=".8"><path fill="#47B8B2" d="M249.84 274H83.62l83.1-81.84L249.85 274"/><path fill="#3D9ECC" d="M191.07 216.13l58.77-57.88V274l-58.77-57.87"/><path fill="#369096" d="M83.62 274l41.56-40.92h-83.1L.5 274h83.1"/></g></svg>
