@@ -11,46 +11,48 @@
   background: linear-gradient(to bottom, #369acc, #195c9b);
 }
 
-.page-intro .slick-slider {
+.intro-slider.slick-dotted {
   flex: 1;
   margin-bottom: 0;
   padding-bottom: 10vh;
   text-align: center;
 }
 
-.page-intro .slick-list {
+.intro-slider .slick-list {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: visible;
 }
 
-.page-intro .slick-track {
+.intro-slider .slick-track {
   flex: 1;
 }
 
-.page-intro .slick-dots {
+.intro-slider .slick-dots {
   bottom: 5vh;
 }
 
-.page-intro figure {
+.intro-slider figure {
   margin: 0 auto;
   width: 96px;
 }
 
-.page-intro figure > img {
+.intro-slider figure > img {
   max-width: 100%;
 }
 
-.page-intro .box {
+.intro-slider .box {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.page-intro .box .paper-button {
+.intro-slider .box .paper-button {
   margin-top: 2.5rem;
 }
 
-.page-intro .box:first-child figure {
+.intro-slider .box:first-child figure {
   --width: 250px;
   position: absolute;
   width: var(--width);
