@@ -8,7 +8,8 @@ export default function() {
   this.transition(
     this.fromRoute('play'),
     this.toRoute('play-success'),
-    this.use('toUp')
+    this.use('toUp'),
+    this.reverse('toDown')
   )
 
   this.transition(
