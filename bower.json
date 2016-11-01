@@ -3,7 +3,7 @@
   "dependencies": {
     "ember": "~2.9.0",
     "ember-cli-shims": "0.1.1",
-    "hammer-time": "1.1.0",
+    "hammer-time": "^1.1.0",
     "hammer.js": "2.0.8",
     "matchMedia": "^0.3.0",
     "slick-carousel": "^1.6.0"
