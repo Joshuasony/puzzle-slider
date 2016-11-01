@@ -129,7 +129,7 @@ export default class Puzzle {
 
   clickHandler(e) {
     if (Tile.isTile(e.target)) {
-      let [ emptyTile ] = this.canvas.getElementsByClassName('empty-tile')
+      let emptyTile = this.canvas.getElementsByClassName('empty-tile')[0]
       let toTile = Tile.fromElement(this.board, emptyTile)
       let fromTile = Tile.fromElement(this.board, e.target)
 

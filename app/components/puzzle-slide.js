@@ -2,17 +2,26 @@
 import Ember from 'ember'
 import Puzzle from '../game/slider'
 
-const { Component, run } = Ember
+const {
+  Component,
+  run,
+  String: { htmlSafe }
+} = Ember
 
 export default Component.extend({
   tagName: 'puzzle-slide',
   classNames: [ 'flex', 'layout-column', 'layout-align-center-center' ],
-  attributeBindings: [ 'tiles' ],
+  attributeBindings: [ 'tiles', 'puzzleStyle:style' ],
   tiles: 4,
   startTime: null,
   puzzle: null,
   timer: null,
   playing: false,
+
+  isSafari: /Safari/.test(navigator.userAgent) &&
+    !/Chrome/.test(navigator.userAgent),
+
+  puzzleStyle: null,
 
   initialTileState: [
     [ [ 1, 0 ], [ 2, 3 ], [ 1, 2 ], [ 0, 1 ] ],
@@ -48,7 +57,7 @@ export default Component.extend({
     this.set('playing', false)
     this.puzzle = new Puzzle(this.element.querySelector('puzzle-board'))
 
-    let [ emptyTile ] = this.element.getElementsByClassName('empty-tile')
+    let emptyTile = this.element.getElementsByClassName('empty-tile')[0]
     let ready = 2 // wait for flash and fadeout animation
     let start = () => {
       if (!--ready) {
@@ -75,10 +84,29 @@ export default Component.extend({
 
   didInsertElement() {
     run.next(() => this.setupPuzzle())
+
+    if (this.isSafari) {
+      this.safariResizer = () => {
+        let { width, height } = this.element.getBoundingClientRect()
+        let size = Math.floor(Math.min(width, height) * 0.8)
+
+        this.set('puzzleStyle',
+          htmlSafe(`--puzzle-width:${size}px`)
+        )
+      }
+
+      window.addEventListener('resize', this.safariResizer, false)
+
+      run.next(this.safariResizer)
+    }
   },
 
   willDestroyElement() {
     this.puzzle.destroy()
+
+    if (this.isSafari) {
+      window.removeEventListener('resize', this.safariResizer, false)
+    }
   },
 
   actions: {
