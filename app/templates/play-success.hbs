@@ -28,7 +28,11 @@
         {{#paper-button onClick=(transition-to 'index')}}
           Nein
         {{/paper-button}}
-        {{#paper-button primary=true raised=true onClick=(transition-to 'submit-time')}}
+        {{#paper-button
+          primary = true
+          raised = true
+          onClick = (route-action 'transitionToSubmitTime')
+          }}
           Yesss
         {{/paper-button}}
       </div>
@@ -39,7 +43,11 @@
         gleich nochmal.
       </p>
       <div class="layout-row layout-align-center-center">
-        {{#paper-button primary=true raised=true onClick=(transition-to 'play')}}
+        {{#paper-button
+          primary = true
+          raised = true
+          onClick = (transition-to 'play')
+          }}
           Neu versuchen
         {{/paper-button}}
       </div>
