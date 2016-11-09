@@ -22,7 +22,11 @@
     {{#paper-button onClick=(transition-to 'index')}}
       Abbrechen
     {{/paper-button}}
-    {{#paper-button primary=true raised=true}}
+    {{#paper-button
+      primary=true
+      raised=true
+      onClick=(transition-to 'leaderboard')
+      }}
       Senden
     {{/paper-button}}
   </div>
