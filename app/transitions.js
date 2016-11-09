@@ -13,6 +13,20 @@ export default function() {
   )
 
   this.transition(
+    this.fromRoute('play-success'),
+    this.toRoute('submit-time'),
+    this.use('explode', {
+      pick: '.timer-time',
+
+      use: [ 'fly-to' ]
+    }, {
+      pick: '.puzzle-solved',
+
+      use: [ 'toUp' ]
+    })
+  )
+
+  this.transition(
     this.toRoute('about'),
     this.use('toLeft'),
     this.reverse('toRight')

@@ -1,1 +1,29 @@
-{{outlet}}
+<div class="solved-background"></div>
+<div class="puzzle-solved flex">
+  <div class="timer-time timer-time-solved flex">
+    <div>
+      {{paper-icon "timer" size=56}}
+      {{#best-time as |bestTime|}}
+        {{format-timer bestTime.latest}}
+      {{/best-time}}
+    </div>
+  </div>
+  <p>
+    Neue Bestzeit übermitteln<br>
+    und entscheiden wohin<br>
+    Puzzle 1'500 Franken<br>
+    spendet.
+  </p>
+  <div class="layout-column">
+    {{paper-input label="Name" value=name onChange=(action (mut name))}}
+    {{paper-input label="Email" value=email onChange=(action (mut email))}}
+  </div>
+  <div class="layout-row layout-align-center-center">
+    {{#paper-button onClick=(transition-to 'index')}}
+      Abbrechen
+    {{/paper-button}}
+    {{#paper-button primary=true raised=true}}
+      Senden
+    {{/paper-button}}
+  </div>
+</div>
