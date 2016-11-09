@@ -1,5 +1,5 @@
 .page-intro .application-outlet,
-.page-intro .liquid-child {
+.page-intro .application-outlet > .liquid-child {
   overflow: visible;
 }
 

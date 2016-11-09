@@ -36,6 +36,8 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  padding: 8px;
 }
 
 .app-version {
@@ -49,4 +51,14 @@ main {
 .slick-dots li button::before {
   color: white !important;
   font-size: 8px;
+}
+
+.leaderboard-list {
+  margin: -8px;
+  background: #fff;
+  color: #333;
+}
+
+.leaderboard-list md-list-item > .md-list-item-inner {
+  align-items: stretch;
 }

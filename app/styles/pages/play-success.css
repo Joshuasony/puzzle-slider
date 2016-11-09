@@ -19,12 +19,6 @@
   left: 8px;
   z-index: -1;
 }
-.liquid-animating .solved-background {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
 
 .puzzle-solved h2 {
   text-transform: uppercase;

@@ -1,0 +1,17 @@
+{{#paper-list class="leaderboard-list"}}
+  {{#vertical-collection
+    items = model
+    defaultHeight = 72
+    as |item|
+    }}
+    {{#paper-item class="layout-align-start-stretch md-2-line"}}
+      <div class="flex-20 layout-row layout-align-start-center">
+        {{item.rank}}
+      </div>
+      <div class="flex layout-column layout-align-center-start">
+        <div>{{item.name}}</div>
+        <small>{{item.time}} - {{moment-format item.date 'DD.MM.YYYY'}}</small>
+      </div>
+    {{/paper-item}}
+  {{/vertical-collection}}
+{{/paper-list}}

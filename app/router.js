@@ -11,7 +11,8 @@ Router.map(function() {
   this.route('play')
   this.route('play-success')
   this.route('about')
-  this.route('submit-time');
+  this.route('submit-time')
+  this.route('leaderboard')
 })
 
 export default Router
