@@ -1,5 +1,5 @@
 export default function() {
-  this.namespace = 'api/v1'
+  this.namespace = '/api/v1'
   this.timing = 400
 
   this.get('leaderboard', ({ leaderboardEntries }) => {
