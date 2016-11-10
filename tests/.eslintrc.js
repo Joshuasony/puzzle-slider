@@ -1,6 +1,7 @@
 module.exports = {
   env: {
-    'embertest': true
+    'embertest': true,
+    'browser': true
   },
   rules: {
     'semi': 0,
