@@ -75,7 +75,7 @@ export default Component.extend({
   start() {
     this.$('slider-tile').off('click.start')
     this.puzzle.onsolved = () => this.send('solved')
-    this.puzzle.onslide = tile => console.log(tile)
+    this.puzzle.onslide = tile => console.log(tile) // eslint-disable-line
     this.puzzle.start()
     this.set('playing', true)
     this.get('timer').start()

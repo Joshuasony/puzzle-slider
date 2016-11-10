@@ -1,24 +1,26 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { moduleForComponent, /* test, */ skip } from 'ember-qunit'
+import hbs from 'htmlbars-inline-precompile'
 
 moduleForComponent('puzzle-slide', 'Integration | Component | puzzle slide', {
   integration: true
-});
+})
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{puzzle-slide}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
+skip('it renders', function(assert) {
   this.render(hbs`
+    <div id="subtoolbar"></div>
+    {{puzzle-slide}}
+  `)
+
+  assert.ok(this.$().text().includes('00:00.000'))
+  assert.ok(this.$().text().includes('play_arrow'))
+
+  this.render(hbs`
+    <div id="subtoolbar"></div>
     {{#puzzle-slide}}
       template block text
     {{/puzzle-slide}}
-  `);
+  `)
 
-  assert.equal(this.$().text().trim(), 'template block text');
-});
+  assert.ok(this.$().text().includes('00:00.000'))
+  assert.ok(this.$().text().includes('play_arrow'))
+})

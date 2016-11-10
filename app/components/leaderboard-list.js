@@ -5,7 +5,7 @@ const { Component, inject, computed } = Ember
 export default Component.extend({
   classNames: [ 'leaderboard-list' ],
   bestTime: inject.service(),
-  items: null,
+  items: [],
   scrollToMyBest: true,
 
   myBestIndex: computed('bestTime.id', 'items.[]', function() {

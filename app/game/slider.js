@@ -298,14 +298,7 @@ function setupSwipes(puzzle) {
     tileHeight = parseInt(computedStyle.height, 10)
   })
 
-  mc.on('panmove', e => {
-    deltaXA = abs(e.deltaX)
-    deltaYA = abs(e.deltaY)
-
-    if (deltaXA === deltaYA) {
-      return
-    }
-
+  function getCurrentFromTile(e) {
     let { x, y } = toTile
 
     if (deltaXA > deltaYA) {
@@ -315,7 +308,18 @@ function setupSwipes(puzzle) {
       y -= max(-1, min(1, e.deltaY))
     }
 
-    let currentFromTile = puzzle.board[y] && puzzle.board[y][x]
+    return puzzle.board[y] && puzzle.board[y][x]
+  }
+
+  mc.on('panmove', e => {
+    deltaXA = abs(e.deltaX)
+    deltaYA = abs(e.deltaY)
+
+    if (deltaXA === deltaYA) {
+      return
+    }
+
+    let currentFromTile = getCurrentFromTile(e)
 
     if (fromTile && currentFromTile !== fromTile) {
       cancelTileTranslate(fromTile)
