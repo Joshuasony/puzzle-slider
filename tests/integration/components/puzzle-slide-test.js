@@ -1,26 +1,20 @@
-import { moduleForComponent, /* test, */ skip } from 'ember-qunit'
+import { moduleForComponent, test } from 'ember-qunit'
 import hbs from 'htmlbars-inline-precompile'
+import wait from 'ember-test-helpers/wait'
 
 moduleForComponent('puzzle-slide', 'Integration | Component | puzzle slide', {
   integration: true
 })
 
-skip('it renders', function(assert) {
+test('it renders', function(assert) {
   this.render(hbs`
     <div id="subtoolbar"></div>
     {{puzzle-slide}}
   `)
 
-  assert.ok(this.$().text().includes('00:00.000'))
-  assert.ok(this.$().text().includes('play_arrow'))
-
-  this.render(hbs`
-    <div id="subtoolbar"></div>
-    {{#puzzle-slide}}
-      template block text
-    {{/puzzle-slide}}
-  `)
-
-  assert.ok(this.$().text().includes('00:00.000'))
-  assert.ok(this.$().text().includes('play_arrow'))
+  return wait().then(() => {
+    assert.ok(this.$().text().indexOf('00:00.000') > -1)
+    assert.ok(this.$().text().indexOf('play_arrow') > -1)
+    assert.ok(this.$('puzzle-board').length)
+  })
 })
