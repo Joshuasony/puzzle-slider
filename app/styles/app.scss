@@ -55,9 +55,16 @@ main {
 }
 
 .leaderboard-list {
+  display: flex;
+  flex: 1;
   margin: -8px;
   background: #fff;
   color: #333;
+  overflow: hidden;
+}
+
+.leaderboard-list > md-list {
+  flex: 1;
 }
 
 .leaderboard-mybest {

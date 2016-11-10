@@ -3,6 +3,7 @@ import Ember from 'ember'
 const { Component, inject, computed } = Ember
 
 export default Component.extend({
+  classNames: [ 'leaderboard-list' ],
   bestTime: inject.service(),
   items: null,
   scrollToMyBest: true,
