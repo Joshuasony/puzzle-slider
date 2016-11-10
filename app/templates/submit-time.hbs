@@ -1,5 +1,6 @@
 <div class="solved-background"></div>
-<div class="puzzle-solved flex">
+<form class="puzzle-solved flex"
+    onsubmit={{route-action 'submitTime' (hash name=name email=email)}}>
   <div class="timer-time timer-time-solved flex">
     <div>
       {{paper-icon "timer" size=56}}
@@ -15,8 +16,8 @@
     spendet.
   </p>
   <div class="layout-column">
-    {{paper-input label="Name" value=name onChange=(action (mut name))}}
-    {{paper-input label="Email" value=email onChange=(action (mut email))}}
+    {{paper-input label="Name" value=name required=true onChange=(action (mut name))}}
+    {{paper-input label="Email" value=email type="email" required=true onChange=(action (mut email))}}
   </div>
   <div class="layout-row layout-align-center-center">
     {{#paper-button onClick=(transition-to 'index')}}
@@ -25,9 +26,9 @@
     {{#paper-button
       primary=true
       raised=true
-      onClick=(transition-to 'leaderboard')
+      onClick=(route-action 'submitTime' (hash name=name email=email))
       }}
       Senden
     {{/paper-button}}
   </div>
-</div>
+</form>

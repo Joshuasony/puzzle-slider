@@ -30,6 +30,7 @@ body {
 main {
   background-color: transparent;
   transition: background-color 300ms;
+  overflow: hidden;
 }
 
 .application-outlet > .liquid-child {
@@ -49,7 +50,7 @@ main {
 }
 
 .slick-dots li button::before {
-  color: white !important;
+  color: #fff !important;
   font-size: 8px;
 }
 
@@ -57,6 +58,11 @@ main {
   margin: -8px;
   background: #fff;
   color: #333;
+}
+
+.leaderboard-mybest {
+  background-color: #3b7bbe;
+  color: #fff;
 }
 
 .leaderboard-list md-list-item > .md-list-item-inner {

@@ -855,7 +855,7 @@ broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1:
     symlink-or-copy "^1.0.0"
     walk-sync "^0.3.1"
 
-broccoli-funnel@^1.0.6, broccoli-funnel@^1.0.7:
+broccoli-funnel@^1.0.2, broccoli-funnel@^1.0.6, broccoli-funnel@^1.0.7:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.0.9.tgz#1b2673be66dd8a8771214e3f3aeb7325012e4580"
   dependencies:
@@ -1027,6 +1027,10 @@ broccoli-uglify-sourcemap@^1.0.0:
     symlink-or-copy "^1.0.1"
     uglify-js "^2.6.0"
     walk-sync "^0.1.3"
+
+broccoli-unwatched-tree@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/broccoli-unwatched-tree/-/broccoli-unwatched-tree-0.1.1.tgz#4312fde04bdafe67a05a967d72cc50b184a9f514"
 
 broccoli-viz@^2.0.1:
   version "2.0.1"
@@ -2233,6 +2237,24 @@ ember-cli-lodash-subset@^1.0.1, ember-cli-lodash-subset@^1.0.7:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/ember-cli-lodash-subset/-/ember-cli-lodash-subset-1.0.11.tgz#0149eef9c0c3505ba44ed202f8d034ddbbfb2826"
 
+ember-cli-mirage@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/ember-cli-mirage/-/ember-cli-mirage-0.2.4.tgz#d85ac677dad06658e506ddfd12a6bd7f4ff6b1ff"
+  dependencies:
+    broccoli-funnel "^1.0.2"
+    broccoli-merge-trees "^1.1.0"
+    broccoli-unwatched-tree "^0.1.1"
+    chalk "^1.1.1"
+    ember-cli-babel "^5.1.5"
+    ember-cli-node-assets "^0.1.4"
+    ember-inflector "^1.9.2"
+    ember-lodash "0.0.9"
+    exists-sync "0.0.3"
+    fake-xml-http-request "^1.4.0"
+    faker "^3.0.0"
+    pretender "^1.4.1"
+    route-recognizer "^0.1.11"
+
 ember-cli-moment-shim@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ember-cli-moment-shim/-/ember-cli-moment-shim-2.2.1.tgz#78870872a626177d0b04223c9eb6be0729590e61"
@@ -2246,6 +2268,17 @@ ember-cli-moment-shim@^2.2.1:
     lodash.defaults "^4.1.0"
     moment "^2.13.0"
     moment-timezone "^0.5.0"
+
+ember-cli-node-assets@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/ember-cli-node-assets/-/ember-cli-node-assets-0.1.4.tgz#11db3d42f8e9cc35c7c52308691da1f04ff854b2"
+  dependencies:
+    broccoli-funnel "^1.0.1"
+    broccoli-merge-trees "^1.1.1"
+    broccoli-unwatched-tree "^0.1.1"
+    debug "^2.2.0"
+    lodash "^4.5.1"
+    resolve "^1.1.7"
 
 ember-cli-normalize-entity-name@^1.0.0:
   version "1.0.0"
@@ -2605,9 +2638,23 @@ ember-hash-helper-polyfill@0.1.1:
     ember-cli-babel "^5.1.3"
     ember-cli-version-checker "^1.1.4"
 
+ember-inflector@^1.9.2:
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/ember-inflector/-/ember-inflector-1.9.6.tgz#574b093664ade6c66e84185d788ec99ed29741af"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+
 ember-load-initializers@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/ember-load-initializers/-/ember-load-initializers-0.5.1.tgz#76e3db23c111dbdcd3ae6f687036bf0b56be0cbe"
+
+ember-lodash@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/ember-lodash/-/ember-lodash-0.0.9.tgz#5cc559a10c2fb4e89de6df3951cfd9a691aff6b4"
+  dependencies:
+    broccoli-merge-trees "^1.1.1"
+    ember-cli-babel "^5.1.5"
+    lodash-es "^3.10.0"
 
 ember-maybe-import-regenerator@^0.1.4:
   version "0.1.4"
@@ -3115,6 +3162,14 @@ extract-zip@~1.5.0:
 extsprintf@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.0.2.tgz#e1080e0658e300b06294990cc70e1502235fd550"
+
+fake-xml-http-request@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/fake-xml-http-request/-/fake-xml-http-request-1.4.0.tgz#6481c727a0eae9c420bae229dcdfc5369c4b5477"
+
+faker@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-3.1.0.tgz#0f908faf4e6ec02524e54a57e432c5c013e08c9f"
 
 falafel@^1.0.1:
   version "1.2.0"
@@ -4403,6 +4458,10 @@ lockfile@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lockfile/-/lockfile-1.0.2.tgz#97e1990174f696cbe0a3acd58a43b84aa30c7c83"
 
+lodash-es@^3.10.0:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-3.10.1.tgz#a1c85d9829c9009004339dc3846dbabb46cf4e19"
+
 lodash._arraycopy@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._arraycopy/-/lodash._arraycopy-3.0.0.tgz#76e7b7c1f1fb92547374878a562ed06a3e50f6e1"
@@ -4623,7 +4682,7 @@ lodash@^3.10.0, lodash@^3.10.1, lodash@^3.5.0, lodash@^3.9.3:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.12.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.1, lodash@~4.16.4:
+lodash@^4.0.0, lodash@^4.12.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.5.1, lodash@^4.6.1, lodash@~4.16.4:
   version "4.16.6"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.6.tgz#d22c9ac660288f3843e16ba7d2b5d06cca27d777"
 
@@ -5685,6 +5744,13 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
+pretender@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/pretender/-/pretender-1.4.1.tgz#dcd21a275cc2a41219e23151ad3f25ff1be4cedc"
+  dependencies:
+    fake-xml-http-request "^1.4.0"
+    route-recognizer "^0.2.3"
+
 printf@^0.2.3:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/printf/-/printf-0.2.5.tgz#c438ca2ca33e3927671db4ab69c0e52f936a4f0f"
@@ -6209,7 +6275,7 @@ resolve-from@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
 
-resolve@^1.1.2, resolve@^1.1.3, resolve@^1.1.4, resolve@^1.1.6, resolve@1.1.7:
+resolve@^1.1.2, resolve@^1.1.3, resolve@^1.1.4, resolve@^1.1.6, resolve@^1.1.7, resolve@1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
@@ -6251,6 +6317,14 @@ rimraf@~2.2.6:
 ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
+
+route-recognizer@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/route-recognizer/-/route-recognizer-0.1.11.tgz#810d8e5702abb4056d6dcb8e865c5685e7c14eb7"
+
+route-recognizer@^0.2.3:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/route-recognizer/-/route-recognizer-0.2.8.tgz#931e2629b09f351ac8e577aea03ad0151781e625"
 
 rsvp@^3.0.14, rsvp@^3.0.16, rsvp@^3.0.17, rsvp@^3.0.18, rsvp@^3.0.21, rsvp@^3.0.6, rsvp@^3.1.0, rsvp@^3.2.1:
   version "3.3.3"

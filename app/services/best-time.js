@@ -40,6 +40,17 @@ export default Service.extend({
     }
   }),
 
+  id: computed({
+    get() {
+      return localStorage.getItem('puzzle-slide-best-time-id')
+    },
+    set(key, value) {
+      localStorage.setItem('puzzle-slide-best-time-id', value)
+
+      return value
+    }
+  }),
+
   formatted: computed('value', function() {
     return formatTimer([ this.get('value') ])
   })

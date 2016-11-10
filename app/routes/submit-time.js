@@ -1,4 +1,24 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-export default Ember.Route.extend({
-});
+const { Route, inject } = Ember
+
+export default Route.extend({
+  ajax: inject.service(),
+  bestTime: inject.service(),
+
+  actions: {
+    submitTime({ name, email }) {
+      let time = this.get('bestTime.latest')
+
+      this.get('ajax')
+        .post('/leaderboard', {
+          contentType: 'application/json',
+          data: JSON.stringify({ name, email, time })
+        })
+        .then(res => {
+          this.set('bestTime.id', res.leaderboardEntry.id)
+          this.transitionTo('leaderboard')
+        })
+    }
+  }
+})
