@@ -67,6 +67,10 @@ main {
   flex: 1;
 }
 
+.leaderboard-list vertical-item {
+  contain: strict;
+}
+
 .leaderboard-mybest {
   background-color: #3b7bbe;
   color: #fff;
