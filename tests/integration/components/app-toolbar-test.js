@@ -8,15 +8,29 @@ moduleForComponent('app-toolbar', 'Integration | Component | app toolbar', {
 test('it renders', function(assert) {
   this.render(hbs`{{app-toolbar}}`)
 
-  assert.ok(this.$().text().includes('Puzzle ITC Slider'))
+  assert.ok(this.$().text().indexOf('Puzzle ITC Slider') > -1)
 
-  // Template block usage:
   this.render(hbs`
     {{#app-toolbar}}
       template block text
     {{/app-toolbar}}
   `)
 
-  assert.ok(this.$().text().includes('Puzzle ITC Slider'))
-  assert.notOk(this.$().text().includes('template block text'))
+  assert.ok(this.$().text().indexOf('Puzzle ITC Slider') > -1)
+  assert.notOk(this.$().text().indexOf('template block text') > -1)
+})
+
+test('it can toggle the sidebar', function(assert) {
+  let toggledSidebar = false
+
+  this.set('paperSidenav', {
+    toggle() {
+      toggledSidebar = true
+    }
+  })
+  this.render(hbs`{{app-toolbar paperSidenav=paperSidenav}}`)
+
+  this.$('.md-button').click()
+
+  assert.ok(toggledSidebar)
 })
