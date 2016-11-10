@@ -5,6 +5,7 @@ const { Route, inject } = Ember
 export default Route.extend({
   ajax: inject.service(),
   bestTime: inject.service(),
+  notify: inject.service(),
 
   actions: {
     submitTime({ name, email }) {
@@ -18,6 +19,13 @@ export default Route.extend({
         .then(res => {
           this.set('bestTime.id', res.leaderboardEntry.id)
           this.transitionTo('leaderboard')
+        })
+        .catch(res => {
+          this.get('notify').error(
+            res.message ||
+            res.responseText ||
+            res.statusText
+          )
         })
     }
   }
