@@ -377,4 +377,5 @@ function a(len, mapper) {
   return Array(len).fill().map(mapper)
 }
 
+// istanbul ignore next
 function noop() {} // eslint-disable-line no-empty-function
