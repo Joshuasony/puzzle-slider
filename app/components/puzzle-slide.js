@@ -56,27 +56,22 @@ export default Component.extend({
   setupPuzzle() {
     this.set('playing', false)
     this.puzzle = new Puzzle(this.element.querySelector('puzzle-board'))
-
-    let emptyTile = this.element.getElementsByClassName('empty-tile')[0]
-    let ready = 2 // wait for flash and fadeout animation
-    let start = () => {
-      if (!--ready) {
-        emptyTile.removeEventListener('animationend', start)
-        run.later(() => {
-          this.setInitialTileState()
-          this.$('slider-tile').on('click.start', () => this.start())
-        }, 500)
+    this.puzzle.onsolved = () => this.send('solved')
+    this.puzzle.onslide = tile => {
+      if (!this.get('playing')) {
+        this.start()
       }
+
+      this.sendAction('onslide', tile)
     }
 
-    emptyTile.addEventListener('animationend', start)
+    run.later(() => {
+      this.setInitialTileState()
+      this.puzzle.start()
+    }, 2000)
   },
 
   start() {
-    this.$('slider-tile').off('click.start')
-    this.puzzle.onsolved = () => this.send('solved')
-    this.puzzle.onslide = tile => console.log(tile) // eslint-disable-line
-    this.puzzle.start()
     this.set('playing', true)
     this.get('timer').start()
     this.set('startTime', this.get('timer.startTime'))

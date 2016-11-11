@@ -135,7 +135,6 @@ export default class Puzzle {
 
       if (distance(fromTile.x, fromTile.y, toTile.x, toTile.y) === 1) {
         this.slideTile(toTile, fromTile)
-        this.onslide(fromTile.toJSON())
       }
     }
   }
@@ -146,6 +145,8 @@ export default class Puzzle {
       this.board[fromTile.y][fromTile.x] = toTile
 
       this.updateBoard()
+
+      this.onslide(fromTile.toJSON())
 
       if (isSolved(this.board)) {
         this.canvas.classList.add('solved')
