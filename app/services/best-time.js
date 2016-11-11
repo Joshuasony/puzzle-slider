@@ -1,5 +1,4 @@
 import Ember from 'ember'
-import { formatTimer } from '../helpers/format-timer'
 
 const { Service, computed } = Ember
 
