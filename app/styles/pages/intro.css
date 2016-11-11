@@ -12,6 +12,8 @@
 }
 
 .intro-slider.slick-dotted {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin-bottom: 0;
   padding-bottom: 10vh;
@@ -19,7 +21,7 @@
 }
 
 .intro-slider .slick-list {
-  min-height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   overflow: visible;
@@ -27,6 +29,17 @@
 
 .intro-slider .slick-track {
   flex: 1;
+  display: flex;
+}
+
+.intro-slider .slick-track::before {
+  content: none;
+  display: none;
+}
+
+.intro-slider .slick-slide {
+  float: none;
+  height: auto;
 }
 
 .intro-slider .slick-dots {
