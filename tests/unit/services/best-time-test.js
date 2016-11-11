@@ -12,6 +12,15 @@ test('it holds the best time in localstorage', function(assert) {
   assert.equal(service.get('value'), 100)
 })
 
+test('it holds the best time date in localstorage', function(assert) {
+  localStorage.clear()
+  localStorage.setItem('puzzle-slide-best-time-date', '2016-11-11T16:03:00')
+
+  let service = this.subject()
+
+  assert.deepEqual(service.get('date'), Date.parse('2016-11-11T16:03:00'))
+})
+
 test('it sets value into localstorage', function(assert) {
   localStorage.clear()
 
