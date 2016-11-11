@@ -9,7 +9,7 @@
       <div class="game-timer-best">
         {{#best-time as |bestTime|}}
           {{paper-icon "timer" size=16}}
-          {{bestTime.formatted}}
+          {{format-timer bestTime.time}}
         {{/best-time}}
       </div>
     </div>

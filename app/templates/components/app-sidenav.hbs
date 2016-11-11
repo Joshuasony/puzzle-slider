@@ -15,7 +15,7 @@
         {{#best-time tagName="div" class="layout-column" as |bestTime|}}
           <div class="game-timer-best">
             {{paper-icon "timer" size=42}}
-            {{bestTime.formatted}}
+            {{format-timer bestTime.time}}
           </div>
           <div class="game-timer-best-date">
             {{moment-format bestTime.date 'DD.MM.YYYY[ - ]HH:mm'}}

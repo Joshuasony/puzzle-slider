@@ -49,9 +49,5 @@ export default Service.extend({
 
       return value
     }
-  }),
-
-  formatted: computed('value', function() {
-    return formatTimer([ this.get('value') ])
   })
 })
