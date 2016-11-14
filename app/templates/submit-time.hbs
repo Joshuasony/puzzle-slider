@@ -24,7 +24,7 @@
       value = name
       required = true
       onChange = (action (mut name))
-      errorMessages = (hash required='Bitte gib deinen Namen ein')
+      errorMessages = (hash required='Bitte gib deinen Namen ein.')
       }}
     {{f.input
       label = "Email"
@@ -32,7 +32,8 @@
       type = "email"
       required = true
       onChange = (action (mut email))
-      errorMessages = (hash required='Bitte gib deine E-Mail Adresse ein')
+      customValidations = emailValidations
+      errorMessages = (hash required='Bitte gib deine E-Mail Adresse ein.')
       }}
   </div>
   <div class="layout-row layout-align-center-center">

@@ -7,6 +7,17 @@ export default Route.extend({
   bestTime: inject.service(),
   notify: inject.service(),
 
+  setupController(controller, model) {
+    this._super(controller, model)
+
+    controller.set('emailValidations', [
+      {
+        message: '%@2 ist keine gültige E-Mail Adresse.',
+        validate: value => !value || /.@./.test(value)
+      }
+    ])
+  },
+
   actions: {
     submitTime({ name, email }) {
       let time = this.get('bestTime.latest')
