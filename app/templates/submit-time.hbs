@@ -19,8 +19,21 @@
     spendet.
   </p>
   <div class="text-left">
-    {{f.input label="Name" value=name required=true onChange=(action (mut name))}}
-    {{f.input label="Email" value=email type="email" required=true onChange=(action (mut email))}}
+    {{f.input
+      label = "Name"
+      value = name
+      required = true
+      onChange = (action (mut name))
+      errorMessages = (hash required='Bitte gib deinen Namen ein')
+      }}
+    {{f.input
+      label = "Email"
+      value = email
+      type = "email"
+      required = true
+      onChange = (action (mut email))
+      errorMessages = (hash required='Bitte gib deine E-Mail Adresse ein')
+      }}
   </div>
   <div class="layout-row layout-align-center-center">
     {{#paper-button onClick=(transition-to 'index')~}}
