@@ -2626,9 +2626,9 @@ ember-cordova@0.3.9:
     svg2png "^3.0.0"
     xml2js "^0.4.17"
 
-ember-css-transitions@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/ember-css-transitions/-/ember-css-transitions-0.1.6.tgz#0474306472d1675b199a072c490a74bc9732dda3"
+ember-css-transitions@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/ember-css-transitions/-/ember-css-transitions-0.1.5.tgz#0c57917b89e7c39d37f4435b8fb18fca0acccf73"
   dependencies:
     ember-cli-babel "^5.1.6"
 
@@ -2720,9 +2720,9 @@ ember-pad@^1.2.2:
   dependencies:
     ember-cli-babel "^5.1.5"
 
-ember-paper@1.0.0-alpha.10:
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/ember-paper/-/ember-paper-1.0.0-alpha.10.tgz#2f394a84e084583a02651e48bb01d8fda85b5fcc"
+ember-paper@1.0.0-alpha.8:
+  version "1.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/ember-paper/-/ember-paper-1.0.0-alpha.8.tgz#f8af9d96261f0bcd72ed644bac910537f6094283"
   dependencies:
     angular-material-source angular/material#v1.0.6
     broccoli-autoprefixer "^3.0.0"
@@ -2731,10 +2731,9 @@ ember-paper@1.0.0-alpha.10:
     broccoli-merge-trees "^1.1.0"
     ember-basic-dropdown "^0.16.0"
     ember-cli-babel "^5.1.6"
-    ember-css-transitions "0.1.6"
+    ember-css-transitions "0.1.5"
     ember-power-select "1.0.0-beta.23"
     ember-wormhole "0.4.1"
-    resolve "^1.1.7"
     virtual-each "0.3.1"
 
 ember-power-select@1.0.0-beta.23:
