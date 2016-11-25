@@ -43,7 +43,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.host = 'https://pitc-puzzleslider-prod.ose3.puzzle.ch'
   }
 
   return ENV;
