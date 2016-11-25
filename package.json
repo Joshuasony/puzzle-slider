@@ -10,7 +10,14 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "prepare-apk": "npm run sign-apk && npm run optimize-apk",
+    "sign-apk-x86": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore puzzle-mobileapps.keystore ember-cordova/cordova/platforms/android/build/outputs/apk/android-x86-release-unsigned.apk puzzlemobileapps",
+    "sign-apk-armv7": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore puzzle-mobileapps.keystore ember-cordova/cordova/platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk puzzlemobileapps",
+    "sign-apk": "npm run sign-apk-x86 && npm run sign-apk-armv7",
+    "optimize-apk-x86": "zipalign -v 4 ember-cordova/cordova/platforms/android/build/outputs/apk/android-x86-release-unsigned.apk android-x86-release-optimized.apk",
+    "optimize-apk-armv7": "zipalign -v 4 ember-cordova/cordova/platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk android-armv7-release-optimized.apk",
+    "optimize-apk": "npm run optimize-apk-x86 && npm run optimize-apk-armv7"
   },
   "repository": "",
   "engines": {
