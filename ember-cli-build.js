@@ -20,10 +20,11 @@ module.exports = function(defaults) {
     },
     autoprefixer: {
       browsers: [
-        'Chrome >= 50',
+        'Chrome >= 49',
         'Safari >= 9',
         'iOS >= 9',
         'Firefox ESR',
+        'Firefox 38',
         'Last 3 Firefox versions'
       ]
     }
