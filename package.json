@@ -1,6 +1,6 @@
 {
   "name": "puzzle-slide-app",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "Small description for puzzle-slide-app goes here",
   "private": true,
   "directories": {
@@ -11,7 +11,8 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test",
-    "prepare-apk": "npm run sign-apk && npm run optimize-apk",
+    "build-apk": "ember cdv:build --platform=android --environment=production --release -- --gradleArg=-PcdvVersionCode=10001",
+    "prepare-apk": "npm run build-apk && npm run sign-apk && npm run optimize-apk",
     "sign-apk-x86": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore puzzle-mobileapps.keystore ember-cordova/cordova/platforms/android/build/outputs/apk/android-x86-release-unsigned.apk puzzlemobileapps",
     "sign-apk-armv7": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore puzzle-mobileapps.keystore ember-cordova/cordova/platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk puzzlemobileapps",
     "sign-apk": "npm run sign-apk-x86 && npm run sign-apk-armv7",
