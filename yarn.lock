@@ -84,7 +84,7 @@ amdefine@>=0.0.4:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.0.tgz#fd17474700cb5cc9c2b709f0be9d23ce3c198c33"
 
-angular-material-source@angular/material#v1.0.6:
+"angular-material-source@github:angular/material#v1.0.6":
   version "1.0.6"
   resolved "https://codeload.github.com/angular/material/tar.gz/8b886cbed0254eaefa2f85077ebf4169cb09a762"
 
@@ -2604,9 +2604,9 @@ ember-concurrency@^0.7.9:
     ember-getowner-polyfill "1.0.1"
     ember-maybe-import-regenerator "^0.1.4"
 
-ember-cordova@0.3.7:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/ember-cordova/-/ember-cordova-0.3.7.tgz#784667744bed44a1371bf679a71641463b142b08"
+ember-cordova@0.3.9:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/ember-cordova/-/ember-cordova-0.3.9.tgz#144064f360ba15dbe457c26a0d96eb50c0e45556"
   dependencies:
     broccoli-funnel "^1.0.1"
     broccoli-merge-trees "^1.1.1"
@@ -2705,13 +2705,14 @@ ember-moment@^6.1.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
-ember-notify@^5.1.6:
-  version "5.1.6"
-  resolved "https://registry.yarnpkg.com/ember-notify/-/ember-notify-5.1.6.tgz#5f728d3ecc792a839cb549fe3ed0f019fed2c706"
+ember-notify@^5.1.7:
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/ember-notify/-/ember-notify-5.1.7.tgz#24e3f5979b9159aba21590526bf082e4b78f702e"
   dependencies:
     ember-cli-babel "^5.1.6"
     ember-cli-htmlbars "^1.0.3"
     ember-string-ishtmlsafe-polyfill "1.0.1"
+    object-assign "^4.1.0"
 
 ember-pad@^1.2.2:
   version "1.2.2"
@@ -4504,13 +4505,13 @@ linkify-it@~1.2.0, linkify-it@~1.2.2:
   dependencies:
     uc.micro "^1.0.1"
 
-liquid-fire@0.26.4:
-  version "0.26.4"
-  resolved "https://registry.yarnpkg.com/liquid-fire/-/liquid-fire-0.26.4.tgz#cc7dca96704eaeeddaf383e6944a32bacb5673c6"
+liquid-fire@0.26.5:
+  version "0.26.5"
+  resolved "https://registry.yarnpkg.com/liquid-fire/-/liquid-fire-0.26.5.tgz#858abb61c3477c4b1c497b9c26e2f3d1dcd4bc83"
   dependencies:
     broccoli-funnel "^1.0.1"
     broccoli-merge-trees "^1.0.0"
-    ember-cli-babel "^5.1.6"
+    ember-cli-babel "^5.1.7"
     ember-cli-htmlbars "^1.0.10"
     ember-cli-version-checker "^1.1.6"
     ember-getowner-polyfill "^1.0.0"

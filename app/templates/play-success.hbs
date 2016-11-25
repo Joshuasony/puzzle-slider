@@ -3,13 +3,7 @@
   <h2>Geschafft!</h2>
 
   {{#best-time as |bestTime|}}
-    <p>
-      {{#if (eq bestTime.latest bestTime.time)}}
-        (very niiiiiiice)
-      {{else}}
-        (äntlech&hellip;)
-      {{/if}}
-    </p>
+    <p>Gratulation!</p>
 
     <div class="timer-time timer-time-solved flex">
       <div>
@@ -20,7 +14,7 @@
 
     {{#if (eq bestTime.latest bestTime.time)}}
       <p>
-        Wow - neue Bestzeit!<br>
+        Wow &ndash; neue Bestzeit!<br>
         Übermitteln und am<br>
         Wettbewerb teilnehmen?
       </p>
@@ -33,14 +27,13 @@
           raised = true
           onClick = (route-action 'transitionToSubmitTime')
           }}
-          Yesss
+          Übermitteln
         {{/paper-button}}
       </div>
     {{else}}
       <p>
-        Das war schnell. Aber nicht<br>
-        schnell genug. Versuchs<br>
-        gleich nochmal.
+        Leider nicht schnell genug.<br>
+        Kopf hoch und nochmal spielen!
       </p>
       <div class="layout-row layout-align-center-center">
         {{#paper-button
@@ -48,7 +41,7 @@
           raised = true
           onClick = (transition-to 'play')
           }}
-          Neu versuchen
+          Nochmal
         {{/paper-button}}
       </div>
     {{/if}}
