@@ -7,24 +7,23 @@ export default function() {
   this.get('leaderboard', ({ leaderboardEntries }) => {
     let res = leaderboardEntries.all()
 
-    res.models = res.models
+    return res.models
       .sort((a, b) => a.time - b.time)
       .map((le, i) => {
         le.attrs.rank = i + 1
 
         return le
       })
-
-    return res
   })
 
   this.post('leaderboard', ({ leaderboardEntries }, request) => {
     let body = JSON.parse(request.requestBody)
-
-    return leaderboardEntries.create({
+    let entry = leaderboardEntries.create({
       name: body.name,
       date: new Date,
       time: body.time
     })
+
+    return entry.attrs
   })
 }

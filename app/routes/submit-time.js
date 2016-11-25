@@ -28,7 +28,7 @@ export default Route.extend({
           data: JSON.stringify({ name, email, time })
         })
         .then(res => {
-          this.set('bestTime.id', res.leaderboardEntry.id)
+          this.set('bestTime.id', res.id)
           this.transitionTo('leaderboard')
         })
         .catch(res => {
