@@ -8,6 +8,5 @@ export default Route.extend({
   model() {
     return this.get('ajax')
       .request('/leaderboard')
-      .then(res => res.leaderboardEntries)
   }
 })
