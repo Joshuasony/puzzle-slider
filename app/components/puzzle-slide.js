@@ -18,7 +18,7 @@ export default Component.extend({
   timer: null,
   playing: false,
 
-  isSafari: /Safari/.test(navigator.userAgent) &&
+  isSafari: /Safari|iPhone|iPad/.test(navigator.userAgent) &&
     !/Chrome/.test(navigator.userAgent),
 
   puzzleStyle: null,
