@@ -182,10 +182,10 @@ test('the play button', function(assert) {
       return wait()
     })
     .then(() => {
-      this.$('[md-font-icon="stop"]').click()
+      this.$('[md-font-icon="replay"]').click()
       assert.notOk(
         this.get('playing'),
-        'clicking the play button stops the game'
+        'clicking the replay button stops the game'
       )
       return wait()
     })
