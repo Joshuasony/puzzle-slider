@@ -102,3 +102,7 @@ main {
 md-input-container .paper-input-error {
   line-height: 1.35
 }
+
+.paper-button:not(.md-icon-button) {
+  padding: 0 1.5rem;
+}
