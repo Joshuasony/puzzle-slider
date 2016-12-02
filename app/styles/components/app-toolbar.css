@@ -2,17 +2,3 @@
   z-index: 2;
   transition: transform 300ms;
 }
-
-.app-toolbar + * {
-  z-index: 1;
-  width: 100% !important;
-}
-
-.app-toolbar + *,
-.app-toolbar + * md-toolbar {
-  background-color: #46bcc0 !important;
-}
-
-.app-toolbar + * md-toolbar {
-  min-height: 85px;
-}

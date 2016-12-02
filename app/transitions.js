@@ -2,14 +2,14 @@ export default function() {
   this.transition(
     this.fromRoute('intro'),
     this.toRoute('play'),
-    this.use('toUp')
+    this.use('crossFade')
   )
 
   this.transition(
     this.fromRoute('play'),
     this.toRoute('play-success'),
-    this.use('toUp'),
-    this.reverse('toDown')
+    this.use('toDown'),
+    this.reverse('toUp')
   )
 
   this.transition(
@@ -27,10 +27,18 @@ export default function() {
   )
 
   this.transition(
-    this.toRoute('about'),
+    this.fromRoute('submit-time'),
+    this.toRoute('leaderboard'),
+    this.use('toUp')
+  )
+
+  this.transition(
+    this.toRoute([ 'leaderboard', 'about' ]),
     this.use('toLeft'),
     this.reverse('toRight')
   )
 
-  this.transition(this.use('crossFade'))
+  this.transition(
+    this.use('crossFade')
+  )
 }

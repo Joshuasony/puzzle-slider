@@ -1,22 +1,21 @@
-{{#ember-wormhole to="subtoolbar"}}
-  {{#paper-toolbar
-    class="layout-row layout-align-start-center"
-    accent=true
-    as |toolbar|
-    }}
-    <div>
-      {{~game-timer registerOn=this~}}
-      <div class="game-timer-best">
-        {{#best-time as |bestTime|}}
-          {{paper-icon "timer" size=16}}
-          {{format-timer bestTime.time}}
-        {{/best-time}}
-      </div>
+{{#paper-toolbar
+  id="subtoolbar"
+  class="layout-row layout-align-start-center md-whiteframe-3dp"
+  accent=true
+  as |toolbar|
+  }}
+  <div>
+    {{~game-timer registerOn=this~}}
+    <div class="game-timer-best">
+      {{#best-time as |bestTime|}}
+        {{paper-icon "timer" size=16}}
+        {{format-timer bestTime.time}}
+      {{/best-time}}
     </div>
-    <div class="flex"></div>
-    {{#paper-button iconButton=true onClick=(action 'toggle')}}
-      {{paper-icon (if playing 'replay' 'play-arrow') size=36}}
-    {{/paper-button}}
-  {{/paper-toolbar}}
-{{/ember-wormhole}}
+  </div>
+  <div class="flex"></div>
+  {{#paper-button iconButton=true onClick=(action 'toggle')}}
+    {{paper-icon (if playing 'replay' 'play-arrow') size=36}}
+  {{/paper-button}}
+{{/paper-toolbar}}
 <puzzle-board class="md-whiteframe-3dp" tiles={{tiles}}></puzzle-board>

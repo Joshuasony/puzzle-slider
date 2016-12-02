@@ -31,7 +31,7 @@ export default Route.extend({
         })
         .then(res => {
           this.set('bestTime.id', res.id)
-          this.transitionTo('leaderboard')
+          this.replaceWith('leaderboard')
         })
         .catch(res => {
           this.get('notify').error(
