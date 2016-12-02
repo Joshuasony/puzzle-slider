@@ -1,7 +1,11 @@
 import Ember from 'ember'
-import SplashScreenMixin from 'ember-cordova/mixins/device/splashscreen'
 
-const { Route } = Ember
+const { Route, inject } = Ember
 
-export default Route.extend(SplashScreenMixin, {
+export default Route.extend({
+  splashscreen: inject.service('device/splashscreen'),
+
+  afterModel() {
+    this.get('splashscreen').hide()
+  }
 })
