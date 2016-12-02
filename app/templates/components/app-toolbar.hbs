@@ -1,10 +1,16 @@
 {{#paper-toolbar class="app-toolbar md-whiteframe-1dp" as |toolbar|}}
   {{#toolbar.tools}}
     {{#unless media.isGtSm}}
-      {{#paper-button iconButton=true click=(action "toggleMenu")}}
-        {{paper-icon "menu"}}
-      {{/paper-button}}
+      {{#if (eq currentRouteName "play")}}
+        {{#paper-button iconButton=true click=(action "toggleMenu")}}
+          {{paper-icon "menu"}}
+        {{/paper-button}}
+      {{else}}
+        {{#paper-button iconButton=true onClick=(action "back")}}
+          {{paper-icon "arrow back"}}
+        {{/paper-button}}
+      {{/if}}
     {{/unless}}
-    <h2>Puzzle Slider</h2>
+    <h2>{{routeTitle}}</h2>
   {{/toolbar.tools}}
 {{/paper-toolbar}}

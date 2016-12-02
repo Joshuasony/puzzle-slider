@@ -3,6 +3,9 @@ module.exports = {
     'embertest': true,
     'browser': true
   },
+  globals: {
+    'server': true
+  },
   rules: {
     'semi': 0,
     'newline-after-var': 0,
