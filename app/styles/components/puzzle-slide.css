@@ -67,4 +67,6 @@ game-timer {
   padding-top: 0;
   padding-bottom: 0;
   margin-right: 54px;
+  width: 64px;
+  height: 64px;
 }
