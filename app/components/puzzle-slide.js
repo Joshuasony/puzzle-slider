@@ -4,6 +4,7 @@ import Puzzle from '../game/slider'
 
 const {
   Component,
+  inject,
   run,
   String: { htmlSafe }
 } = Ember
@@ -17,6 +18,7 @@ export default Component.extend({
   puzzle: null,
   timer: null,
   playing: false,
+  moveRecorder: inject.service(),
 
   isSafari: /Safari|iPhone|iPad/.test(navigator.userAgent) &&
     !/Chrome/.test(navigator.userAgent),
@@ -62,7 +64,7 @@ export default Component.extend({
         this.start()
       }
 
-      this.sendAction('onslide', tile)
+      this.get('moveRecorder').record(tile)
     }
 
     run.later(() => {
@@ -73,6 +75,7 @@ export default Component.extend({
 
   start() {
     this.set('playing', true)
+    this.get('moveRecorder').reset()
     this.get('timer').start()
     this.set('startTime', this.get('timer.startTime'))
   },

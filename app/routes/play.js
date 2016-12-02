@@ -17,10 +17,7 @@ export default Route.extend({
       }
 
       run.later(() => this.transitionTo('play-success'), ONE_SECOND)
-    },
-
-    slidedTile(tile) {
-      console.log(tile) // eslint-disable-line no-console
     }
+
   }
 })
