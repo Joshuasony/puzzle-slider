@@ -51,8 +51,7 @@ body.page-intro {
 }
 
 .intro-slider figure {
-  margin: 0 auto;
-  width: 96px;
+  margin: 0;
 }
 
 .intro-slider figure > img {
@@ -75,4 +74,22 @@ body.page-intro {
   width: var(--width);
   left: calc(50% + 20px - var(--width) / 2);
   bottom: calc(-10vh - 50px);
+}
+
+.intro-tree {
+  width: 120px;
+}
+
+.intro-gift {
+  width: 240px;
+}
+
+@media (min-width: 375px) {
+  .intro-tree {
+    width: 160px;
+  }
+
+  .intro-gift {
+    width: 280px;
+  }
 }
