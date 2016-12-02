@@ -46,6 +46,10 @@ body.page-intro {
   bottom: 5vh;
 }
 
+.intro-slider h2 {
+  margin-top: 0;
+}
+
 .intro-slider figure {
   margin: 0 auto;
   width: 96px;

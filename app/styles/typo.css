@@ -1,0 +1,36 @@
+.typeset h2 {
+  font-size: 1.8rem;
+}
+
+.typeset p {
+  font-size: 1.1rem;
+}
+
+.typeset :any-link {
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: underline;
+}
+
+.typeset address {
+  line-height: 1.34;
+}
+
+@media (min-width: 321px) {
+  .typeset h2 {
+    font-size: 2rem;
+  }
+
+  .typeset p {
+    font-size: 1.2rem;
+  }
+}
+
+.typeset-padding {
+  padding: 0 1rem;
+}
+
+@media (min-width: 375px) {
+  .typeset-padding {
+    padding: 0 2rem;
+  }
+}
