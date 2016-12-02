@@ -1,4 +1,4 @@
-import { eq } from 'puzzle-slide-app/helpers/eq'
+import { eq } from 'puzzle-slider/helpers/eq'
 import { module, test } from 'qunit'
 
 module('Unit | Helper | eq')

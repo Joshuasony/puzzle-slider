@@ -8,7 +8,7 @@ moduleForComponent('app-toolbar', 'Integration | Component | app toolbar', {
 test('it renders', function(assert) {
   this.render(hbs`{{app-toolbar}}`)
 
-  assert.ok(this.$().text().indexOf('Puzzle Slider Game') > -1)
+  assert.ok(this.$().text().indexOf('Puzzle Slider') > -1)
 
   this.render(hbs`
     {{#app-toolbar}}
@@ -16,7 +16,7 @@ test('it renders', function(assert) {
     {{/app-toolbar}}
   `)
 
-  assert.ok(this.$().text().indexOf('Puzzle Slider Game') > -1)
+  assert.ok(this.$().text().indexOf('Puzzle Slider') > -1)
   assert.notOk(this.$().text().indexOf('template block text') > -1)
 })
 

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'puzzle-slide-app',
+    modulePrefix: 'puzzle-slider',
     environment: environment,
     rootURL: '/',
     locationType: 'hash',

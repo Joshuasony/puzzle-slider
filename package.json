@@ -1,7 +1,7 @@
 {
-  "name": "puzzle-slide-app",
+  "name": "puzzle-slider",
   "version": "1.0.2",
-  "description": "Small description for puzzle-slide-app goes here",
+  "description": "Small description for puzzle-slider goes here",
   "private": true,
   "directories": {
     "doc": "doc",

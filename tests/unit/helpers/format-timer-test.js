@@ -1,4 +1,4 @@
-import { formatTimer } from 'puzzle-slide-app/helpers/format-timer'
+import { formatTimer } from 'puzzle-slider/helpers/format-timer'
 import { module, test } from 'qunit'
 
 module('Unit | Helper | format timer')

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="ch.puzzle.SlideApp" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>puzzleSlideApp</name>
+<widget id="ch.puzzle.PuzzleSlider" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Puzzle Slider</name>
   <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

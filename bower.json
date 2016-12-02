@@ -1,5 +1,5 @@
 {
-  "name": "puzzle-slide-app",
+  "name": "puzzle-slider",
   "dependencies": {
     "ember": "2.10.0-beta.3",
     "ember-cli-shims": "0.1.3",
