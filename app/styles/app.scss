@@ -17,10 +17,10 @@
 }
 
 body {
-  background-color: $base-background-color;
-  background-image: url(pictures/background.svg);
-  background-position: bottom right;
-  background-repeat: no-repeat;
+  background-image: url(pictures/background.svg),
+                    linear-gradient(to bottom, #238bca, #1e5a96);
+  background-position: bottom right, top;
+  background-repeat: no-repeat, no-repeat;
   color: rgba(255, 255, 255, 0.87);
 }
 

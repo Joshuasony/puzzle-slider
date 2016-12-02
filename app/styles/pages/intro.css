@@ -7,8 +7,8 @@
   transform: translateY(-105%);
 }
 
-.page-intro md-card-content {
-  background: linear-gradient(to bottom, #369acc, #195c9b);
+body.page-intro {
+  background-image: linear-gradient(to bottom, #238bca, #1e5a96);
 }
 
 .intro-slider.slick-dotted {
