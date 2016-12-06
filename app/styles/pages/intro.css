@@ -24,7 +24,7 @@ body.page-intro {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 .intro-slider .slick-track {
