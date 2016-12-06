@@ -1,0 +1,30 @@
+.contact {
+  display: flex;
+}
+
+.address {
+  margin-right: 2rem;
+}
+
+.badges {
+  display: flex;
+  align-self: flex-end;
+}
+
+.github-badge,
+.twitter-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 0.5rem;
+}
+
+.twitter-badge {
+  background-color: #55acee;
+}
+
+.github-badge {
+  background-color: #000;
+}
