@@ -15,19 +15,15 @@
     {{#if (eq bestTime.latest bestTime.time)}}
       <p>
         Wow &ndash; neue Bestzeit!<br>
-        Übermitteln und am<br>
-        Wettbewerb teilnehmen?
+        Ob sich die noch überbieten lässt?
       </p>
       <div class="layout-row layout-align-center-center">
-        {{#paper-button onClick=(transition-to 'index')}}
-          Nein
-        {{/paper-button}}
         {{#paper-button
           primary = true
           raised = true
-          onClick = (route-action 'transitionToSubmitTime')
+          onClick = (transition-to 'play')
           }}
-          Übermitteln
+          Nochmal
         {{/paper-button}}
       </div>
     {{else}}

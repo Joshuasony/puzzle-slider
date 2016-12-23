@@ -1,6 +1,6 @@
 {
   "name": "puzzle-slider",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Small description for puzzle-slider goes here",
   "private": true,
   "directories": {
@@ -20,11 +20,14 @@
     "optimize-apk-armv7": "zipalign -v 4 ember-cordova/cordova/platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk android-armv7-release-optimized.apk",
     "optimize-apk": "npm run optimize-apk-x86 && npm run optimize-apk-armv7"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puzzle/puzzle-slider-app"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Damian Senn <senn@puzzle.ch>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.5.3",
